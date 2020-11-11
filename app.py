@@ -23,9 +23,7 @@ def create_connection(path):
 
     return connection
 
-userdb = create_connection("E:\\users.db")
-articlesdb = create_connection("E:\\articles.db")
-emailsdb = create_connection("E:\\emails.db")
+db = create_connection("sqllite3:\\TWR.db")
 
 @app.route("/")
 def index():
