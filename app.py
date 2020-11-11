@@ -23,7 +23,7 @@ def create_connection(path):
 
     return connection
 
-db = create_connection("sqllite3:\\TWR.db")
+db = create_connection("sqllite3:\TWR.db")
 
 @app.route("/")
 def index():
