@@ -56,14 +56,14 @@ def getinvolved():
 
 @app.route("/search")
 def search():
-    ##implement search
     query = str(request.args.get("q")).lower
-    
-    with sqlite3.connect("TWR.db") as con:
-        db = con.cursor()
-        articles = []
-        articles.append(db.execute("SELECT titles, authors, descriptions FROM articles WHERE tags LIKE '%%';",))
-        con.commit()
+    print(query)
 
-        print(articles)
+    ##with sqlite3.connect("TWR.db") as con:
+      ##  db = con.cursor()
+        ##articles = []
+        ##articles.append(db.execute("SELECT titles, authors, descriptions FROM articles WHERE tags LIKE '%" + query + "%';",))
+        ##con.commit()
+
+        ##print(articles)
     return render_template("article.html", title=query, articles=articles)
