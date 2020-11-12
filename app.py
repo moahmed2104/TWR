@@ -64,4 +64,6 @@ def search():
         articles = []
         articles.append(db.execute("SELECT titles, authors, descriptions FROM articles WHERE tags LIKE '%%';",))
         con.commit()
+
+        print(articles)
     return render_template("article.html", title=query, articles=articles)
