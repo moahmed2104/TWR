@@ -46,7 +46,8 @@
     background-color: transparent;
   }
 
-  .fa:hover {
+  .fa:hover 
+  {
     color: red;
   }
 
