@@ -5,6 +5,10 @@
     Home
 {% endblock %}
 
-{% block main %}
+{% block body %}
+
+    {% for page in content %}
+        <p>{{ page }}</p>
+    {% endfor %}
 
 {% endblock %}
