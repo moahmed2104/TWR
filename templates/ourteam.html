@@ -4,3 +4,56 @@
 {% block title %}
     Our Team
 {% endblock %}
+
+{% block body %}
+    <h1>Our Team</h1>
+    <h2>Executive Team</h2>
+    <div class="w3-row-padding container-fluid">
+        <div class="w3-third">
+            <img src="static/usf.jpg" class="img_cool" id="alaz" alt="ALAZNAY" width="100%">
+            <h2>Alazne Qaisar</h2>
+            <p class="title">Founder &amp; CEO</p>
+
+            <div id="alaz_info" class="ghost">
+                <p class="bio">PHYSICS</p>
+                <p class="insta"></p>
+            </div>
+        </div>
+
+        <div class="w3-third">
+                <img id="lava" class="img_cool" src="static/usf.jpg" alt="Lavanya" width="100%">
+            <h2>Lavanya Menon</h2>
+            <p class="title">Editor in Chief</p>
+
+            <div id="lava_info" class="ghost">
+                <p class="bio">Guns and Ships</p>
+                <p class="insta">@LAVA<link href=""></p>
+            </div>
+        </div>
+        
+            <div class="w3-third">
+                    <img id="mo" class="img_cool" src="static/mo.png" alt="Mohamed" width="100%">
+                <h2 >Mohamed Ahmed</h2>
+                <p class="title">Senior Political Columnist &amp; Cool Tech Guy</p>
+                
+                <div id="mo_info" class="ghost">
+                    <p class="bio">biology</p>
+                    <p class="insta"><a href="https://www.instagram.com/mohameddaahmed/">@MO</a></p>
+                </div>
+          </div>
+    </div>
+
+        <div class="w3-row-padding">
+         
+            <img id="usf" class="img_cool" src="static/usf.jpg" alt="Youssef">
+            <h2>Youssef El Mays</h2>
+            <p class="title">Chief of Tech &amp; Emiratie Business Man</p>
+            
+            <div id="usf_info" class="ghost">
+                <p class="bio">GEOlogy</p>
+                <p class="insta"> @yelmays </p>
+          </div>
+        </div>
+
+        <script src="static/execs.js"></script>
+{% endblock %}
