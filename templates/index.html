@@ -5,6 +5,10 @@
     Home
 {% endblock %}
 
-{% block main %}
+{% block body %}
+<img src="static/blacktext.png" alt="The Written Revolutions" style="width: 400px;" class="center">
+    {% for page in content %}
+        <p>{{ page }}</p>
+    {% endfor %}
 
 {% endblock %}

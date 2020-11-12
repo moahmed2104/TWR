@@ -2,9 +2,20 @@ from flask import Flask, redirect, render_template, request, session
 from tempfile import mkdtemp
 from flask_session import Session
 import sqlite3
+from flask_mail import Mail, Message
+import os
 
 
 app = Flask(__name__)
+mail = Mail(app)
+
+
+app.config["MAIL_DEFAULT_SENDER"] = "thewrittenrevolutions@gmail.com"
+app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USERNAME"] = "thewrittenrevolutions"
 
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -25,9 +36,27 @@ def create_connection(path):
     return connection
 
 
-@app.route("/")
+@app.route("/", methods =["GET", "POST"])
 def index():
-    return render_template("index.html")
+    with create_connection("TWR.db") as con:
+        db = con.cursor()
+        content = list(db.execute("SELECT text FROM articles;"))
+        con.commit()
+    
+   
+    ##email = request.form["email"]
+
+    
+    #if email:
+    #    msg = Message("Hello", recipients=[email])
+    #    mail.send(msg)
+    
+    return render_template("index.html", content=content)
+
+#app rout for email --> send email --> add email to database--> redirect to #
+@app.route("/email", methods=["GET", "POST"])
+def email():
+    return redirect("#")
 
 @app.route("/political")
 def political():
