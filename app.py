@@ -3,6 +3,7 @@ from tempfile import mkdtemp
 from flask_session import Session
 import sqlite3
 
+
 app = Flask(__name__)
 
 
@@ -23,7 +24,7 @@ def create_connection(path):
 
     return connection
 
-db = create_connection("TWR.db")
+
 
 @app.route("/")
 def index():
@@ -53,3 +54,14 @@ def submissions():
 def getinvolved():
     return render_template("getinvolved.html")
 
+@app.route("/search")
+def search():
+    ##implement search
+    query = str(request.args.get("q")).lower
+    
+    with sqlite3.connect("TWR.db") as con:
+        db = con.cursor()
+        articles = []
+        articles.append(db.execute("SELECT titles, authors, descriptions FROM articles WHERE tags LIKE '%%';",))
+        con.commit()
+    return render_template("article.html", title=query, articles=articles)

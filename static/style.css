@@ -16,7 +16,6 @@
   background-color: #043927;
   display:inline-block;
   text-align:center;
-  float:left;
   width:100%;
   overflow:hidden;
 }
@@ -83,3 +82,12 @@
   }
 
 
+  hr 
+  { 
+    display: block; 
+    overflow: hidden; 
+    border-style: inset; 
+    border: 10px solid white;
+    width: 80%;
+    height: 8px;
+  }

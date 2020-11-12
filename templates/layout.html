@@ -50,8 +50,8 @@
                                 <a class="nav-link" href='/getinvolved'>Get Involved</a></li>  
                     </ul>
 
-                    <form class="form-inline my-2 my-lg-0" action="#">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="form-inline my-2 my-lg-0" action="/search">
+                        <input class="form-control mr-sm-2" id="q" name="q" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn btn-outline-light" type="submit">Search</button>
                     </form>
                 </div>
@@ -64,13 +64,15 @@
                     <label style="color: white; text-align: center; margin-bottom:-10px;" for="email">Get email updates</label>
                     <div class="container-fluid" style="text-align: center;">
                         <form class="form-inline" action="#" method="POST" style="display: inline-block; margin-bottom: 35px;">
-                            <input autocomplete="off" autofocus class="form-control email_input" name="email" placeholder="Email" type="email">
+                            <input autocomplete="off" class="form-control email_input" name="email" placeholder="Email" type="email">
                             <button class="btn btn-sm email_submit" style="background-color: #043927; padding-left: -10pt;" type="submit"><i class='fa fa-envelope'></i></button>
                             <div style='clear:both;'></div>
                             <input name='uri' type='hidden' value='thewrittenrevolutions/uwot'/>
                             <input name='loc' type='hidden' value='en_US'/>
                         </form>
+                        <hr>
                     </div>
+                    
                     <div class="container-fluid fixed-bottom" style="margin: auto; text-align: center;">
                         <a href='https://www.instagram.com/thewrittenrevolutions' target='_blank'><i class='fa fa-instagram'></i></a>
                         <a href='https://www.facebook.com/thewrittenrevolutions' target='_blank'><i class='fa fa-facebook-f'></i></a>
