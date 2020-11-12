@@ -25,18 +25,17 @@ def create_connection(path):
     return connection
 
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/political")
 def political():
-    return render_template("article.html", title= "Political")
+    return redirect("search?q=political")
 
 @app.route("/creative")
 def creative():
-    return render_template("article.html", title= "Creative")
+    return redirect("search?q=creative")
 
 @app.route("/ourmission")
 def ourmission():
@@ -57,13 +56,15 @@ def getinvolved():
 @app.route("/search")
 def search():
     ##implement search
-    query = str(request.args.get("q")).lower
-    
-    with sqlite3.connect("TWR.db") as con:
+    query = request.args.get("q")
+    with create_connection("TWR.db") as con:
         db = con.cursor()
-        articles = []
-        articles.append(db.execute("SELECT titles, authors, descriptions FROM articles WHERE tags LIKE '%%';",))
+        SQ = "%" + query + "%"
+        cmd = """SELECT titles, authors, descriptions, image FROM articles 
+                WHERE tags LIKE ? OR authors LIKE ? OR descriptions LIKE ? OR titles LIKE ?;"""
+        articles = list(db.execute(cmd, (SQ, SQ, SQ, SQ)))
         con.commit()
 
-        print(articles)
-    return render_template("article.html", title=query, articles=articles)
+    for article in articles:
+        print(article[0])
+    return render_template("articles.html", title=query, articles=articles)
