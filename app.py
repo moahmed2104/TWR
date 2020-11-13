@@ -4,7 +4,7 @@ from flask_session import Session
 from flask_mail import Mail, Message
 import os
 from werkzeug.security import check_password_hash
-from helpers import login_required, create_connection
+#from helpers import login_required, create_connection
 
 app = Flask(__name__)
 mail = Mail(app)
