@@ -6,51 +6,96 @@
 {% endblock %}
 
 {% block body%}
-<h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30pt;">Submit your work to be published!</h1>
+    <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30pt;">Submit your work to be published!</h1>
+    <br>
+    <br>
+    <div>
+        <h2 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20pt;">Select which category your submission falls under:</h2>
+    </div>
 
-<br>
-<br>
-<div>
-    <h2 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20pt;">Select which category your submission falls under:</h2>
-</div>
-<div class="form-group">
-    <div class="form-row">
-        <div class="col" id="polit" style="text-align: center;">
-            <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Political</button>
-            
-            <div id="poli" class="ghost">
-                <p>hhahshsh</p>
+    <form style="text-align: center;">
+    <div class="form-group">
+        <div class="form-row">
+
+            <div class="col" id="polit" style="text-align: center;">
+                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Political</button>
+            </div> 
+
+            <div class="col" id="poe" style="text-align: center;">
+                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Poetry</button>  
             </div>
-        </div>
-        <div class="col" id="poe" style="text-align: center;">
-            <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Poetry</button>  
             
-            <div id="poem" class="ghost">
-            </div>  
-        </div>
-        <div class="col" id="bus" style="text-align: center;">
-            <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Economics & Business</button> 
+            <div class="col" id="bus" style="text-align: center;">
+                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Economics & Business</button> 
+            </div>    
             
-            <div id="econ" class="ghost">
-            </div>   
-        </div>
-        <div class="col" id="write" style="text-align: center;">
-            <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Freewords</button>  
             
-            <div id="free" class="ghost">
-            </div>  
-        </div>
-        <div class="col" id="crea" style="text-align: center;">
-            <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Creative</button>    
+            <div class="col" id="write" style="text-align: center;">
+                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Freewords</button>  
+            </div>    
             
-            <div id="creative" class="ghost">
-            </div>
+            <div class="col" id="crea" style="text-align: center;">
+                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Creative</button>    
+            </div>    
         </div>
     </div>
-</div>
 
-<form>
-    <input type="file" id="myFile" name="filename">
-    <input type="submit">
-</form>
+    <form action="/submissions" method=”POST” name=”emailsub”>
+        <input type="file" id="myFile" name="fileemail">
+        <input type="submit">
+    </form>
+
+    <div id="poli" class="ghost">
+        <h3 style="text-align: left;">Requirements</h3>
+        <ul>
+            <li>Formatting:
+                <ul>
+                    <li>Include a title and a by line</li>
+                    <li>Article has to be max 4 pages including the references & resources</li>
+                    <li>Three pages of info and the fourth page is for references</li>
+                    <li>2.5 pages minimum including the references</li> 
+                    <li>Two pages of info and the third page will be for the references</li>
+                    <li>Font - Open Sans</li> 
+                    <li>Size - 11 max, 10 min</li>
+                </ul>
+            </li>
+            <li>Research:
+                <ul>
+                <li>Research is critical</li>
+                <li>Plagiarism is not tolerated</li>
+                <li>Use credible sources</li>
+                <li>Balance biases</li>
+                <li>Referencing - just copy and paste links at the bottom of your articles.</li>
+                </ul>
+            </li>
+            <li>Use diplomatic and formal language in your writing</li>
+            <li>Make sure your submission is in either .docx or .pdf form</li>
+        </ul>
+    </div>
+
+    <div id="poem" class="ghost">
+        <ul>
+            <li>Include a brief analysis or author's note for your poem</li>
+            <li>Formatting:
+                <ul>
+                    <li></li>
+                    <li>Include a title and a by line</li>
+                    <li>Font - Open Sans</li> 
+                    <li>Size - 11 max, 10 min</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="econ" class="ghost">
+
+    </div>
+            
+    <div id="free" class="ghost">
+    </div>  
+    
+    <div id="creative" class="ghost">
+    </div>
+        
+<script src="static/sub.js"></script>
 {% endblock %}
