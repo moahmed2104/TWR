@@ -9,12 +9,14 @@
     {% for article in articles %}
         <div class="container">
             <div>
-                <img src="static/{{ article[3] }}" alt="{{ article[3] }}">
+                <img src="{{ article[3] }}" alt="{{ article[3] }}" width="50%">
             </div>
-            <h2>{{ article[0].capitalize() }}</h2>
-            <p style="font-size: 13pt; margin-top: -7px;">By: {{ article[1] }}</p>
+            <!-- MAKE TITLE a link and authors a search -->
+            <a href="/article/{{article[0].capitalize()}}"><h2>{{ article[0].capitalize() }}</h2></a>
+            <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ article[1] }}">{{ article[1] }}</a></p>
             <p style="font-size: 11pt; margin-top: -7px; color: rgb(61, 59, 59)">{{ article[2] }}</p>
         </div>
+        <br>
             
     {% endfor %}
     

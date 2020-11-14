@@ -5,6 +5,8 @@ from flask_mail import Mail, Message
 import os
 from werkzeug.security import check_password_hash
 from helpers import login_required, create_connection
+import csv
+import json
 
 app = Flask(__name__)
 mail = Mail(app)
@@ -42,6 +44,18 @@ app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+mail = Mail(app)
+
+@app.route("/submissions")
+def ii():
+    request.form[fileemail]
+    msg = Message('Hello', sender = 'thewrittenrevolutions@gmail.com', recipients = ['thewrittenrevolutions@gmail.com'])
+    msg.body = "New Submission!"
+    mail.send(msg)
+    return "Sent"
+
+
 
 @app.after_request
 def after_request(response):
@@ -84,7 +98,14 @@ def ourmission():
 
 @app.route("/ourteam")
 def mission():
-    return render_template("ourteam.html")
+    people = []
+    with open("static/ourteam.csv") as f:
+        reader = csv.DictReader(f)
+
+        for row in reader:
+            people.append(row)
+    peopleJS = "{'team': " + str(people) + "}"
+    return render_template("ourteam.html", people=people, peopleJS = peopleJS)
 
 @app.route("/submissions")
 def submissions():
@@ -96,18 +117,20 @@ def getinvolved():
 
 @app.route("/search")
 def search():
-    ##implement search
+    ##get query
     query = request.args.get("q")
+
+    ##interact with database
     with create_connection("TWR.db") as con:
         db = con.cursor()
         SQ = "%" + query + "%"
         cmd = """SELECT titles, authors, descriptions, image FROM articles 
-                WHERE tags LIKE ? OR authors LIKE ? OR descriptions LIKE ? OR titles LIKE ?;"""
+                WHERE tags LIKE ? OR authors LIKE ? OR descriptions LIKE ? OR titles LIKE ? 
+                ORDER BY id DESC;"""
         articles = list(db.execute(cmd, (SQ, SQ, SQ, SQ)))
         con.commit()
+    print(articles)
 
-    for article in articles:
-        print(article[0])
     return render_template("articles.html", title=query, articles=articles)
 
 
@@ -206,3 +229,21 @@ def addName():
     name = request.form["name"]
     return redirect(f"/admin_login/{name}")
 
+
+@app.route("/article/<string:articlename>")
+def article(articlename):
+    with create_connection("TWR.DB") as con:
+        db = con.cursor()
+
+        ids = list(db.execute("SELECT id FROM articles WHERE titles = ?", (articlename,)))
+
+        if len(ids) != 1: 
+            # SHow the two article by going
+            return
+        
+        contents = list(db.execute("SELECT titles, authors, text, image"))
+        con.commit()
+    
+    print(contents)
+
+    return render_template("article.html", contents=contents)

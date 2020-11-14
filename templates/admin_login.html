@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    
+    Admin Login
+
+{% endblock %}
+
+{% block body %}
+
+    {% if failed %}
+        <script>
+            alert("Incorrect Password")
+        </script>
+    {% endif %}
+    
+    {% if NoName %}
+        <h1>No name was provided</h1>
+        <form action="/addName" method="POST">
+            <div class="form-group">
+                <label for="name">Enter your name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    {% else %}
+
+        <h1> Hello {{ name }}, please login.</h1>
+        <form action="/admin_login/{{ name }}" method="POST">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" aria-describedby="password">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    {% endif %}
+    
+    
+    <img src="static/wtlogo.png" alt="logo" width= 100%>
+{% endblock %}
