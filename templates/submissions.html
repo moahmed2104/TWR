@@ -9,40 +9,56 @@
     <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30pt;">Submit your work to be published!</h1>
     <br>
     <br>
-    <div>
-        <h2 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20pt;">Select which category your submission falls under:</h2>
-    </div>
-
-    <form style="text-align: center;">
-    <div class="form-group">
-        <div class="form-row">
-
-            <div class="col" id="polit" style="text-align: center;">
-                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Political</button>
-            </div> 
-
-            <div class="col" id="poe" style="text-align: center;">
-                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Poetry</button>  
-            </div>
-            
-            <div class="col" id="bus" style="text-align: center;">
-                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Economics & Business</button> 
-            </div>    
-            
-            
-            <div class="col" id="write" style="text-align: center;">
-                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Freewords</button>  
-            </div>    
-            
-            <div class="col" id="crea" style="text-align: center;">
-                <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Creative</button>    
-            </div>    
-        </div>
-    </div>
-
     
-    <form action="/submissions" method=”POST” name=”emailsub”>
-        <input type="file" id="efile" name="fileemail">
+
+    <form style="text-align: center;" action="/submissions" method="POST">
+        <div style="text-align: left;">
+            <label for="name">Name</label>
+            <div class="form-group" >
+                <input id="name" name="name" type="text" placeholder="Name">
+            </div>
+
+            <br>
+            
+            <label for="email">Email</label>
+            <div class="form-group">
+                <input id="email" name="email" type="email" placeholder="Email">
+            </div>
+        </div>
+        
+
+
+        <div>
+            <h2 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20pt;">Select which category your submission falls under:</h2>
+        </div>
+        
+        <div class="form-group">
+            <div class="form-row">
+
+                <div class="col" id="polit" style="text-align: center;">
+                    <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Political</button>
+                </div> 
+
+                <div class="col" id="poe" style="text-align: center;">
+                    <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Poetry</button>  
+                </div>
+                
+                <div class="col" id="bus" style="text-align: center;">
+                    <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Economics & Business</button> 
+                </div>    
+                
+                
+                <div class="col" id="write" style="text-align: center;">
+                    <button  type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Freewords</button>  
+                </div>    
+                
+                <div class="col" id="crea" style="text-align: center;">
+                    <button type="button" class="btn btn-dark" aria-pressed="true" style="margin: 30px; background-color: #043927; display: inline-block;">Creative</button>    
+                </div>    
+            </div>
+        </div>
+
+        <input type="file" id="fileemail" name="fileemail">
         <input type="submit">
     </form>
 
@@ -89,13 +105,15 @@
     </div>
 
     <div id="econ" class="ghost">
-
+        Requirements
     </div>
             
     <div id="free" class="ghost">
+        Requirements
     </div>  
     
     <div id="creative" class="ghost">
+        Requirements
     </div>
 
 <script src="static/sub.js"></script>

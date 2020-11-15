@@ -15,11 +15,13 @@ def create_connection(path):
         print(f"The error '{e}' occurred")
 
     return connection
-
+i =0
 with create_connection("TWR.db") as con:
     db = con.cursor()
     for row in reader:
-        sql = "INSERT INTO articles (titles, authors, descriptions, tags, contents, image, date) VALUES (?, ?, ?, ?, ?, ?, ?);"
-        db.execute(sql, (row["titles"], row["authors"], row["descriptions"], row["tags"], row["contents"], row["image"], row["date"]))
-        print(row["id"])
+        sql = "INSERT INTO articles (titles, authors, descriptions, tags, text, image, date) VALUES (?, ?, ?, ?, ?, ?, ?);"
+        db.execute(sql, (row["titles"], row["authors"], row["descriptions"], row["tags"], row["text"], row["image"], row["date"]))
         con.commit()
+        i = i + 1
+
+print(i)

@@ -3,6 +3,7 @@ from tempfile import mkdtemp
 from flask_session import Session
 from flask_mail import Mail, Message
 import os
+import werkzeug
 from werkzeug.security import check_password_hash
 from helpers import login_required, create_connection
 import csv
@@ -32,12 +33,14 @@ mail = Mail(app)
 
 """
 
-app.config["MAIL_DEFAULT_SENDER"] = "thewrittenrevolutions@gmail.com"
+app.config["MAIL_DEFAULT_SENDER"] = "moahmed2104@gmail.com"
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
-app.config["MAIL_PORT"] = 587
+app.config["MAIL_PORT"] = 465#587
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_USE_TLS"] = True
-app.config["MAIL_USERNAME"] = "thewrittenrevolutions"
+#app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = "moahmed2104@gmail.com"
+app.config["MAIL_ASCII_ATTACHMENTS"] = True
 
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -47,16 +50,27 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-@app.route("/submissions", methods=["POST"])
+mail = Mail(app)
+
+@app.route("/submissions", methods=["GET","POST"])
 def submissions():
-    submissions = request.form[submissions]
-    msg = Message('Hello', sender = 'thewrittenrevolutions@gmail.com', recipients = ['thewrittenrevolutions@gmail.com'])
-    file=request.form["fileemail"]
-    msg.body = "New Submission!"
-    with app.open_resource("file") as fp:
-        msg.attach("file", fp.read())
-    mail.send(msg)
-    return "Sent"
+    if request.method == "POST":
+        msg = Message('New Submission!', recipients = ['moahmed2104@gmail.com'])
+        
+        name = request.form["name"]
+        email = request.form["email"]
+        f = request.files["fileemail"]
+        print(f.filename)
+        f.save(werkzeug.secure_filename(f.filename))
+        msg.body = f"Submission by: {name} <{email}> \n"
+        
+        filename = werkzeug.secure_filename(f.filename)
+        
+        with app.open_resource(filename) as fp:
+            msg.attach(filename, fp.read())
+        mail.send(msg)
+
+    return render_template("submissions.html")
 
 @app.after_request
 def after_request(response):
@@ -108,9 +122,6 @@ def mission():
     peopleJS = "{'team': " + str(people) + "}"
     return render_template("ourteam.html", people=people, peopleJS = peopleJS)
 
-@app.route("/submissions")
-def submissions():
-    return render_template("submissions.html")
 
 @app.route("/getinvolved")
 def getinvolved():
