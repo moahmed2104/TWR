@@ -27,6 +27,8 @@ mail = Mail(app)
         Create article view count (maybe a linked table in SQL)
         make script to upload initial articles
         Optimize for mobile
+        make sure JS for all exec team members is in place
+        Make junior columnist and Ambassador Forms and pages
 
 """
 
