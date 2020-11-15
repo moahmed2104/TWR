@@ -5,7 +5,7 @@
     Submissions
 {% endblock %}
 
-{% block body%}
+{% block body %}
     <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30pt;">Submit your work to be published!</h1>
     <br>
     <br>
@@ -40,8 +40,9 @@
         </div>
     </div>
 
+    
     <form action="/submissions" method=”POST” name=”emailsub”>
-        <input type="file" id="myFile" name="fileemail">
+        <input type="file" id="efile" name="fileemail">
         <input type="submit">
     </form>
 
@@ -96,6 +97,6 @@
     
     <div id="creative" class="ghost">
     </div>
-        
+
 <script src="static/sub.js"></script>
 {% endblock %}

@@ -45,17 +45,16 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-mail = Mail(app)
-
-@app.route("/submissions")
-def ii():
-    request.form[fileemail]
+@app.route("/submissions", methods=["POST"])
+def submissions():
+    submissions = request.form[submissions]
     msg = Message('Hello', sender = 'thewrittenrevolutions@gmail.com', recipients = ['thewrittenrevolutions@gmail.com'])
+    file=request.form["fileemail"]
     msg.body = "New Submission!"
+    with app.open_resource("file") as fp:
+        msg.attach("file", fp.read())
     mail.send(msg)
     return "Sent"
-
-
 
 @app.after_request
 def after_request(response):
