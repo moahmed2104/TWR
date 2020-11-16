@@ -14,7 +14,11 @@
 
             <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
             <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-            <link  href="/static/styles.css" rel="stylesheet">
+           
+            <link rel="stylesheet" media="screen and (min-width: 600px)" href="static/widescreen.css">
+            <link rel="stylesheet" media="screen and (max-width: 599px)" href="static/smallscreen.css">
+            <link rel="stylesheet" href="static/styles.css">
+
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
             <link href="/static/tlogo.ico" rel="icon">
@@ -29,23 +33,74 @@
             <title>{% block title %}{% endblock %}: TWR</title>
 
         </head>
-
+        
         <body style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: normal 100%;">
-            <nav class="navbar fixed-top  navbar-expand-lg navbar-dark" style="background-color:#043927;">
+            <div class="fixed-top">
+                <div class="collapse hamburger" id="navbarToggleExternalContent" style="background-color:#043927;">
+                  <div class="p-4" >
+                    <a class="navbar-brand" href='/'>
+                        <img width="50px" height="mr-auto" style="margin-top: -12px;" src="static/wtlogo.png"  alt= "TWR">
+                    </a>
+                    <ul>
+                        <li class="nav-item active a">
+                            <a class="nav-link" href='/political'>Politics</a></li>
+                        <li class="nav-item active a">
+                            <a class="nav-link" href='/creative'>Creative</a></li>
+                        <li class="nav-item active a">
+                            <a class="nav-link" href='/econ'>Business & Economics</a></li>
+                        <li class="nav-item active a">
+                            <a class="nav-link" href='/ourmission'>Mission</a></li>
+                        <li class="nav-item active a">
+                            <a class="dropdown-item" href="ourteam.html">Executives</a></li>
+                        <li class="nav-item active a">
+                                <a class="dropdown-item" href="#">Another action</a></li>
+                        <li class="nav-item active a"> 
+                                <a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="nav-item active a">
+                            <a class="nav-link" href='/submissions'>Submissions</a></li>
+                        <li class="nav-item active a">
+                            <a class="nav-link" href='/getinvolved'>Get Involved</a></li>  
+                    </ul>
+
+                  </div>
+                    <nav class="navbar navbar-dark" >
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </nav>
+                </div>
+                
+            
+            
+
+
+            <nav class="navbar fixed-top  navbar-expand-lg navbar-dark" style="background-color:#043927;" id="navbar">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="navbar-brand" href='/'><div class="cool">
-                                <img width="50px" height="mr-auto" style="margin-top: -12px; margin-left: 10px;" src="static/wtlogo.png"  alt= "TWR">
+                            <a class="navbar-brand" href='/'><div>
+                                <img width="50px" height="mr-auto" style="margin-top: -12px;" src="static/wtlogo.png"  alt= "TWR">
+                                
                             </a></li>
                             <li class="nav-item active a">
-                                <a class="nav-link" href='/political'>Political</a></li>
+                                <a class="nav-link" href='/political'>Politics</a></li>
                             <li class="nav-item active a">
                                 <a class="nav-link" href='/creative'>Creative</a></li>
                             <li class="nav-item active a">
-                                <a class="nav-link" href='/ourmission'>Mission</a></li>
+                                <a class="nav-link" href='/econ'>Business & Economics</a></li>
                             <li class="nav-item active a">
-                                <a class="nav-link" href='/ourteam'>Our Team</a></li>
+                                <a class="nav-link" href='/ourmission'>Mission</a></li>
+                            <li class="nav-item dropdown a">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Our Team
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #043927; color: white;">
+                                      <a class="dropdown-item" href="ourteam.html">Executives</a>
+                                      <a class="dropdown-item" href="#">Another action</a>
+                                      <a class="dropdown-item" href="#">Something else here</a>
+                                    
+                                </div>
+                            </li>
                             <li class="nav-item active a">
                                 <a class="nav-link" href='/submissions'>Submissions</a></li>
                             <li class="nav-item active a">
@@ -56,8 +111,9 @@
                         <input class="form-control mr-sm-2" id="q" name="q" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn btn-outline-light" type="submit">Search</button>
                     </form>
-                </div>
+                    </div>
             </nav>
+        </div>
             <div class="container" style="padding: 50px; overflow-y:scroll;">
                 <br>
                 {% block body %}{% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request, session, flash
 from tempfile import mkdtemp
 from flask_session import Session
 from flask_mail import Mail, Message
@@ -8,10 +8,12 @@ from werkzeug.security import check_password_hash
 from helpers import login_required, create_connection
 import csv
 import json
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 mail = Mail(app)
 
+UPLOAD_FOLDER = "/uploads"
 
 
 """ ##TODO
@@ -42,35 +44,18 @@ app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = "moahmed2104@gmail.com"
 app.config["MAIL_ASCII_ATTACHMENTS"] = True
 
-
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 Session(app)
 
 mail = Mail(app)
 
-@app.route("/submissions", methods=["GET","POST"])
-def submissions():
-    if request.method == "POST":
-        msg = Message('New Submission!', recipients = ['moahmed2104@gmail.com'])
-        
-        name = request.form["name"]
-        email = request.form["email"]
-        f = request.files["fileemail"]
-        print(f.filename)
-        f.save(werkzeug.secure_filename(f.filename))
-        msg.body = f"Submission by: {name} <{email}> \n"
-        
-        filename = werkzeug.secure_filename(f.filename)
-        
-        with app.open_resource(filename) as fp:
-            msg.attach(filename, fp.read())
-        mail.send(msg)
-
-    return render_template("submissions.html")
 
 @app.after_request
 def after_request(response):
@@ -107,6 +92,10 @@ def political():
 def creative():
     return redirect("search?q=creative")
 
+@app.route("/econ")
+def business():
+    return redirect("search?q=business")
+
 @app.route("/ourmission")
 def ourmission():
     return render_template("mission.html")
@@ -122,6 +111,34 @@ def mission():
     peopleJS = "{'team': " + str(people) + "}"
     return render_template("ourteam.html", people=people, peopleJS = peopleJS)
 
+@app.route("/submissions", methods=["GET","POST"])
+def submissions():
+    if request.method == "POST":
+        print(request.files)
+
+        if 'fileemail' not in request.files:
+            flash('No file part')
+            print("UR A FAILURE")
+            return redirect(request.url)
+        msg = Message('New Submission!', recipients = ['moahmed2104@gmail.com'])
+        name = request.form["name"]
+        email = request.form["email"]
+        f = request.files["fileemail"]
+        print(f.filename)
+        if f: 
+            filename = secure_filename(f.filename)            
+            f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            msg.body = f"Submission by: {name} <{email}> \n"
+            with app.open_resource(filename) as fp:
+                msg.attach(os.path.join(app.config['UPLOAD_FOLDER'], filename), fp.read())
+            mail.send(msg)
+            return render_template("index.html", sent = True)
+        
+        flash('No selected file')
+        return redirect(request.url)
+
+    return render_template("submissions.html")
 
 @app.route("/getinvolved")
 def getinvolved():
@@ -141,7 +158,6 @@ def search():
                 ORDER BY id DESC;"""
         articles = list(db.execute(cmd, (SQ, SQ, SQ, SQ)))
         con.commit()
-    print(articles)
 
     return render_template("articles.html", title=query, articles=articles)
 

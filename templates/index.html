@@ -6,7 +6,14 @@
 {% endblock %}
 
 {% block body %}
-<img src="static/blacktext.png" alt="The Written Revolutions" style="width: 400px;" class="center">
+
+    {% if sent %}
+        <script>
+            alert("Submission has been sent to editors, please await a response.")
+        </script>
+    {% endif %}
+
+    <img src="static/blacktext.png" alt="The Written Revolutions" style="width: 400px;" class="center">
     {% for page in content %}
         <p>{{ page }}</p>
     {% endfor %}

@@ -1,11 +1,16 @@
 .a 
 {
-    padding-left: 75px;
+    padding-left: 35px;
 }
 
 .a a
 {
     padding-left: inherit;
+}
+
+.dd
+{
+  color: white;
 }
 
 .ours
@@ -93,13 +98,6 @@
     margin-top: 1em;
 }
 
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
-
 .ghost h2, .ghost p, .shown h2, .shown p
 {
   display: inherit;
@@ -121,7 +119,8 @@
   margin-right: auto;
 }
 
-h1{
+h1
+{
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
   font-size: 30pt;
