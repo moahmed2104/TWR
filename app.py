@@ -84,9 +84,9 @@ def email():
     return render_template("email.html", email=email)
 
 
-@app.route("/political")
-def political():
-    return redirect("search?q=political")
+@app.route("/politics")
+def politics():
+    return redirect("search?q=politics")
 
 @app.route("/creative")
 def creative():
@@ -231,7 +231,7 @@ def admin_login(name = "NoName"):
         
         session["user_id"] = name
         return redirect(f"/admin/{name}")
-
+        
     return render_template("admin_login.html", name=name)
 
 @app.route("/admin")
