@@ -100,16 +100,16 @@ def business():
 def ourmission():
     return render_template("mission.html")
 
-@app.route("/ourteam")
+@app.route("/execs")
 def mission():
     people = []
-    with open("static/ourteam.csv") as f:
+    with open("static/execs.csv") as f:
         reader = csv.DictReader(f)
 
         for row in reader:
             people.append(row)
     peopleJS = "{'team': " + str(people) + "}"
-    return render_template("ourteam.html", people=people, peopleJS = peopleJS)
+    return render_template("execs.html", people=people, peopleJS = peopleJS)
 
 @app.route("/submissions", methods=["GET","POST"])
 def submissions():
