@@ -15,23 +15,26 @@
         {% for i in range(people | length) %}
 
                 <div class="col">
-                    <div class="container"  style="display: inline-block">
+                    <!div class="container"  style="display: inline-block">
+                        <div style="overflow: hidden; width: 100%; ">
+                            <img src="static/mo.png" width="100%" height="auto%">
+                            <!img src="{{ people[i].profile_photo }}" alt="Profile: {{ people[i].fullname }}">
+                        </div>
                         <details>
-                            <summary>
-                                <img src="{{ people[i].profile_photo }}" alt="Profile: {{ people[i].fullname }}">
+                            <summary> 
                                 <h2>{{ people[i].fullname }}</h2>
                                 <p>{{ people[i].title }}
                             </summary>
                             
                             <div id="{{people[i].insta_info}}" class="shown">
-                                <p>{{ people[i].short_bio }}<p>
-                                <p><a href="https://www.instagram.com/{{people[i].insta}}">@{{ people[i].insta }}</a></p>
+                                <p><strong><a href="https://www.instagram.com/{{people[i].insta}}">@{{ people[i].insta }}</a></strong></p>
+                                <p style="font-size: 12px;">{{ people[i].short_bio }}<p>
                             </div>
                         </details>
-                    </div>
+                    <!/div>
                 </div>
             
-            {% if i % 2 == 1 %}
+            {% if i % 3 == 2 %}
                 </div>
                 <div class="row">
                 <br>
