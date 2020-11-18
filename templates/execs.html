@@ -16,18 +16,12 @@
 
                 <div class="col">
                     <!div class="container"  style="display: inline-block">
-<<<<<<< HEAD
-                        <div style="overflow: hidden; height: 200px; width: 200px">
-                            <img src="https://drive.google.com/uc?export=view&id={{ people[i].profile_photo }}" alt="Profile: {{ people[i].fullname }}" width="100%">                        </div>
-=======
-                        <div style="overflow: hidden; width: 100%; ">
-                            <!img src="static/mo.png" width="100%" height="auto%">
-                            <!img src="{{ people[i].profile_photo }}" alt="Profile: {{ people[i].fullname }}">
-                        </div>
->>>>>>> 978f5b210a12c8f3005c6b7b8f7d82a4e3212630
+                        
                         <details>
                             <summary> 
-                                <img src="static/mo.png" width="100%" height="auto%">
+                                <div style="overflow: hidden; height: 250px; width: 80%; margin: auto">
+                                    <img src="https://drive.google.com/uc?export=view&id={{ people[i].profile_photo }}" style="display: block; margin: auto;" width="100%" height="auto">
+                                </div>
                                 <h2>{{ people[i].fullname }}</h2>
                                 <p>{{ people[i].title }}
                             </summary>
@@ -45,7 +39,16 @@
                 <div class="row">
                 <br>
             {% endif %}
-            
+
+            {% if i == (people | length) - 1%}
+                    {% for j in range(0, 2) %}
+                        {% if (i + j) % 3 == 2 %}
+                            </div> 
+                        {% else %}
+                            <div class="col"></div>
+                        {% endif %}
+                    {% endfor %}
+            {% endif %}
         {% endfor %}
-    </div> 
+   
 {% endblock %}
