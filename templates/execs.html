@@ -15,11 +15,6 @@
         {% for i in range(people | length) %}
 
                 <div class="col">
-                    <!div class="container"  style="display: inline-block">
-                        <div style="overflow: hidden; width: 100%; ">
-                            <!img src="static/mo.png" width="100%" height="auto%">
-                            <!img src="{{ people[i].profile_photo }}" alt="Profile: {{ people[i].fullname }}">
-                        </div>
                         <details>
                             <summary> 
                                 <img src="static/mo.png" width="100%" height="auto%">
@@ -32,7 +27,7 @@
                                 <p style="font-size: 12px;">{{ people[i].short_bio }}<p>
                             </div>
                         </details>
-                    <!/div>
+               
                 </div>
             
             {% if i % 3 == 2 %}
