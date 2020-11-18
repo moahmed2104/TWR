@@ -89,6 +89,9 @@ def mission():
         reader = csv.DictReader(f)
 
         for row in reader:
+            row["profile_photo"] = row["profile_photo"].rpartition('id=')[2]
+            print(row["profile_photo"].rpartition('id='))
+            print(row["fullname"], row["profile_photo"])
             people.append(row)
     
     return render_template("execs.html", people=people)
