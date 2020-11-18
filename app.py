@@ -17,24 +17,21 @@ UPLOAD_FOLDER = "/uploads"
 
 
 """ ##TODO
-
-        make index/suggested/new
         finish /admin --> upload new articles add admin tags to identify uploads
-        make our team responsive (awainting csv)
-        upload all articles
+        make our teamm images cropped to a specific size, maybe circle()
         Make accounts for all admins
-        ADd other headings in navbar (ask Alazne)
         DO get involved
-        finish submissions
         finish emails/register and send an email when someone registers
         Create article view count (maybe a linked table in SQL)
         make script to upload initial articles
         Optimize for mobile
-        make sure JS for all exec team members is in place
         Make junior columnist and Ambassador Forms and pages
-
+        Make suggested
+        add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
+        mmake submissions accept files and email them
 """
 
+## SET configurations
 app.config["MAIL_DEFAULT_SENDER"] = "moahmed2104@gmail.com"
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
 app.config["MAIL_PORT"] = 465#587
@@ -64,37 +61,22 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+#index
 @app.route("/")
 def index():
     with create_connection("TWR.db") as con:
         db = con.cursor()
-        content = list(db.execute("SELECT text FROM articles;"))
+        content = list(db.execute("SELECT titles, authors, descriptions, image FROM articles ORDER BY id DESC LIMIT 5;"))
         con.commit()
 
-    #if email:
-    #    msg = Message("Hello", recipients=[email])
-    #    mail.send(msg)
     
-    return render_template("index.html", content=content)
+    return render_template("index.html", articles=content)
 
-
+#email function
 @app.route("/email", methods =["POST"])
 def email():
     email = request.form["email"]
     return render_template("email.html", email=email)
-
-
-@app.route("/politics")
-def politics():
-    return redirect("search?q=politics")
-
-@app.route("/creative")
-def creative():
-    return redirect("search?q=creative")
-
-@app.route("/econ")
-def business():
-    return redirect("search?q=business")
 
 @app.route("/ourmission")
 def ourmission():
@@ -108,8 +90,8 @@ def mission():
 
         for row in reader:
             people.append(row)
-    peopleJS = "{'team': " + str(people) + "}"
-    return render_template("execs.html", people=people, peopleJS = peopleJS)
+    
+    return render_template("execs.html", people=people)
 
 @app.route("/submissions", methods=["GET","POST"])
 def submissions():
@@ -120,7 +102,7 @@ def submissions():
             flash('No file part')
             print("UR A FAILURE")
             return redirect(request.url)
-        msg = Message('New Submission!', recipients = ['moahmed2104@gmail.com'])
+        """msg = Message('New Submission!', recipients = ['moahmed2104@gmail.com'])
         name = request.form["name"]
         email = request.form["email"]
         f = request.files["fileemail"]
@@ -134,7 +116,7 @@ def submissions():
                 msg.attach(os.path.join(app.config['UPLOAD_FOLDER'], filename), fp.read())
             mail.send(msg)
             return render_template("index.html", sent = True)
-        
+        """
         flash('No selected file')
         return redirect(request.url)
 
@@ -144,6 +126,7 @@ def submissions():
 def getinvolved():
     return render_template("getinvolved.html")
 
+#search function
 @app.route("/search")
 def search():
     ##get query
@@ -153,7 +136,7 @@ def search():
     with create_connection("TWR.db") as con:
         db = con.cursor()
         SQ = "%" + query + "%"
-        cmd = """SELECT titles, authors, descriptions, image FROM articles 
+        cmd = """SELECT titles, authors, descriptions, image, date FROM articles 
                 WHERE tags LIKE ? OR authors LIKE ? OR descriptions LIKE ? OR titles LIKE ? 
                 ORDER BY id DESC;"""
         articles = list(db.execute(cmd, (SQ, SQ, SQ, SQ)))
@@ -161,7 +144,7 @@ def search():
 
     return render_template("articles.html", title=query, articles=articles)
 
-
+#email registration function
 @app.route("/register", methods=["POST"])
 def register():
     email = str(request.form["email"])
@@ -180,7 +163,7 @@ def register():
 
     with create_connection("TWR.db") as con:
         db = con.cursor()
-        check_cmd = "SELECT email FROM users;"
+        check_cmd = "SELECT email FROM users;"  #Selecting emails from database to email
         check = list(db.execute(check_cmd))
         checker = True
 
@@ -198,7 +181,9 @@ def register():
             db.execute(cmd, (email, firstname, lastname, tags))
             con.commit()
 
-        ##send email
+        msg = Message('TWR Subscription!', recipients = [f"{email}"])
+        msg.body="Thank you for subscribing to The Written Revolutions email updates, you will get an email whenever there is a post related to one of the topics you are interested in."
+        mail.send(msg)
 
     return redirect("/")
 
@@ -250,6 +235,25 @@ def admin(name="NoName"):
 @login_required
 def post():
     name = session.get("user_id")
+    title = request.form.get("title")
+    authors = request.form.get("authors")
+    description = request.form.get("description")
+    content = request.form.get("content")
+    img = request.form.get("image")
+    date = request.form.get("date")
+
+    with create_connection("TWR.db") as con:
+        db = con.cursor()
+        MAXID = list(db.execute("SELECT MAX(id) FROM articles"))
+        id = MAXID[0][0] + 1
+
+        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date) VALUES (?, ?, ?, ?, ?, ?, ?);", (titles, authors, descriptions, tags, text, image, date))
+    
+
+    f = open(f"static/articles/{id}.txt", "w")
+    f.write(content)
+    f.close()
+
 
     return redirect(f"/admin/{name}")
 @app.route("/addName", methods=["POST"])

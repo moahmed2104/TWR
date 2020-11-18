@@ -126,3 +126,6 @@ h1
   font-size: 30pt;
 }
 
+details summary::-webkit-details-marker {
+  display:none;
+}

@@ -14,8 +14,53 @@
     {% endif %}
 
     <img src="static/blacktext.png" alt="The Written Revolutions" style="width: 400px;" class="center">
-    {% for page in content %}
-        <p>{{ page }}</p>
-    {% endfor %}
+    <br>
+    
+    <div class="container-fluid">
+        <div class=center style="overflow: hidden; width: 50%; max-height: 500px;" >
+            <img class="center" src="{{ articles[0][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[0][3] }}" width="100%" style="margin-left: auto; margin-right: auto;">
+        </div>
+        <a href="/article/{{articles[0][0].capitalize()}}"><h2>{{ articles[0][0].capitalize() }}</h2></a>
+        <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[0][1] }}">{{ articles[0][1] }}</a></p>
+        <p style="font-size: 11pt; margin-top: -7px; color: rgb(61, 59, 59)">{{ articles[0][2] }}</p>
+    </div>
+
+    <hr style="height:2px;border-width:0;color:gainsboro;background-color:gainsboro">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class=col>
+                <div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
+                    <img class="center" src="{{ articles[1][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[1][3] }}" width="100%" style="margin-left: auto; margin-right: auto;">
+                </div>
+                <a href="/article/{{articles[1][0].capitalize()}}"><h2>{{ articles[1][0].capitalize() }}</h2></a>
+                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[1][1] }}">{{ articles[1][1] }}</a></p>
+            </div>
+
+            <div class=col>
+                <div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
+                    <img class="center" src="{{ articles[2][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[2][3] }}" width="100%" style="margin-left: auto; margin-right: auto;">
+                </div>
+                <a href="/article/{{articles[2][0].capitalize()}}"><h2>{{ articles[2][0].capitalize() }}</h2></a>
+                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[2][1] }}">{{ articles[2][1] }}</a></p>
+            </div>
+
+            <div class=col>
+                <div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
+                    <img class="center" src="{{ articles[3][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[3][3] }}" width="100%" style="margin-left: auto; margin-right: auto;">
+                </div>
+                <a href="/article/{{articles[3][0].capitalize()}}"><h2>{{ articles[3][0].capitalize() }}</h2></a>
+                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[3][1] }}">{{ articles[3][1] }}</a></p>
+            </div>
+
+            <div class=col>
+                <div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
+                    <img class="center" src="{{ articles[4][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[4][3] }}" width="100%" style="margin-left: auto; margin-right: auto;">
+                </div>
+                <a href="/article/{{articles[4][0].capitalize()}}"><h2>{{ articles[4][0].capitalize() }}</h2></a>
+                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[4][1] }}">{{ articles[4][1] }}</a></p>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
