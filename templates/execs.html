@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Our Team
+{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30pt;"><u>__Executive Team__</u></h1>
+    
+    <br>
+    <br>
+    
+    <div class="row">
+        {% for i in range(people | length) %}
+
+                <div class="col">
+                    <div class="container"  style="display: inline-block">
+                        <details>
+                            <summary>
+                                <img src="{{ people[i].profile_photo }}" alt="Profile: {{ people[i].fullname }}">
+                                <h2>{{ people[i].fullname }}</h2>
+                                <p>{{ people[i].title }}
+                            </summary>
+                            
+                            <div id="{{people[i].insta_info}}" class="shown">
+                                <p>{{ people[i].short_bio }}<p>
+                                <p><a href="https://www.instagram.com/{{people[i].insta}}">@{{ people[i].insta }}</a></p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            
+            {% if i % 2 == 1 %}
+                </div>
+                <div class="row">
+                <br>
+            {% endif %}
+            
+        {% endfor %}
+    </div> 
+{% endblock %}
