@@ -15,9 +15,16 @@
         {% for i in range(people | length) %}
 
                 <div class="col">
+<<<<<<< HEAD
+=======
+                    <!div class="container"  style="display: inline-block">
+                        
+>>>>>>> 4d1beb71f30c3fd1e8564c362f147c6cfe4b03f4
                         <details>
                             <summary> 
-                                <img src="static/mo.png" width="100%" height="auto%">
+                                <div style="overflow: hidden; height: 250px; width: 80%; margin: auto">
+                                    <img src="https://drive.google.com/uc?export=view&id={{ people[i].profile_photo }}" style="display: block; margin: auto;" width="100%" height="auto">
+                                </div>
                                 <h2>{{ people[i].fullname }}</h2>
                                 <p>{{ people[i].title }}
                             </summary>
@@ -35,7 +42,16 @@
                 <div class="row">
                 <br>
             {% endif %}
-            
+
+            {% if i == (people | length) - 1%}
+                    {% for j in range(0, 2) %}
+                        {% if (i + j) % 3 == 2 %}
+                            </div> 
+                        {% else %}
+                            <div class="col"></div>
+                        {% endif %}
+                    {% endfor %}
+            {% endif %}
         {% endfor %}
-    </div> 
+   
 {% endblock %}
