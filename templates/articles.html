@@ -8,7 +8,7 @@
 {% block body %}
 
     {% for i in range(articles | length) %}
-        <div class=row style="max-height: 350px;"">
+        <div class=row style="max-height: 350px;">
             {% if i % 2 == 0 %}
                 <div class=col style="overflow: hidden; width: 50%; max-height: 350px;">
                     <img src="{{ articles[i][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[i][3] }}" width="100%">
