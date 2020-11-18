@@ -8,7 +8,7 @@
 {% block body %}
 
     {% for i in range(articles | length) %}
-        <div class=row style="max-height: 350px;">
+        <div class=row style="max-height: 350px; font-family: Georgia, 'Times New Roman', Times, serif;">
             {% if i % 2 == 0 %}
                 <div class=col style="overflow: hidden; width: 50%; max-height: 350px;">
                     <img src="{{ articles[i][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[i][3] }}" width="100%">
@@ -16,7 +16,7 @@
                 
                 <div class="col">
                     <!-- MAKE TITLE a link and authors a search -->
-                    <a href="/article/{{articles[i][0].capitalize()}}"><h2>{{ articles[i][0].capitalize() }}</h2></a>
+                    <a href="/article/{{articles[i][0].capitalize()}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[i][0].capitalize() }}</h2></a>
                     <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[i][1] }}">{{ articles[i][1] }}</a></p>
                     <p style="font-size: 12pt; color: #798EA4; margin-top: -7px;">{{ articles[i][4] }}</p>
                     <p style="font-size: 11pt; margin-top: -7px; color: rgb(61, 59, 59)">{{ articles[i][2] }}</p>
@@ -24,7 +24,7 @@
             {% else %}
                 <div class="col" >
                     <!-- MAKE TITLE a link and authors a search -->
-                    <a href="/article/{{articles[i][0].capitalize()}}"><h2>{{ articles[i][0].capitalize() }}</h2></a>
+                    <a href="/article/{{articles[i][0].capitalize()}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[i][0].capitalize() }}</h2></a>
                     <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[i][1] }}">{{ articles[i][1] }}</a></p>
                     <p style="font-size: 12pt; color: #798EA4;  margin-top: -7px;">{{ articles[i][4] }}</p>
                     <p style="font-size: 11pt; margin-top: -7px; color: rgb(61, 59, 59)">{{ articles[i][2] }}</p>
