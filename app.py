@@ -18,7 +18,6 @@ UPLOAD_FOLDER = "/uploads"
 
 """ ##TODO
         finish /admin --> upload new articles add admin tags to identify uploads
-        make our teamm images cropped to a specific size, maybe circle()
         Make accounts for all admins
         DO get involved
         finish emails/register and send an email when someone registers
@@ -36,7 +35,7 @@ app.config["MAIL_DEFAULT_SENDER"] = "moahmed2104@gmail.com"
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
 app.config["MAIL_PORT"] = 465#587
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
-#app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = "moahmed2104@gmail.com"
 app.config["MAIL_ASCII_ATTACHMENTS"] = True
@@ -66,7 +65,8 @@ def after_request(response):
 def index():
     with create_connection("TWR.db") as con:
         db = con.cursor()
-        content = list(db.execute("SELECT titles, authors, descriptions, image FROM articles ORDER BY id DESC LIMIT 5;"))
+        ##Select 9 last articles
+        content = list(db.execute("SELECT titles, authors, descriptions, image, id FROM articles ORDER BY id DESC LIMIT 9;"))
         con.commit()
 
     
@@ -82,6 +82,7 @@ def email():
 def ourmission():
     return render_template("mission.html")
 
+#Executive page getting the team information from the .csv
 @app.route("/execs")
 def mission():
     people = []
@@ -103,13 +104,12 @@ def submissions():
 
         if 'fileemail' not in request.files:
             flash('No file part')
-            print("UR A FAILURE")
             return redirect(request.url)
-        """msg = Message('New Submission!', recipients = ['moahmed2104@gmail.com'])
+        msg = Message('New Submission!', recipients = ['moahmed2104@gmail.com'])
         name = request.form["name"]
         email = request.form["email"]
         f = request.files["fileemail"]
-        print(f.filename)
+        
         if f: 
             filename = secure_filename(f.filename)            
             f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -119,17 +119,11 @@ def submissions():
                 msg.attach(os.path.join(app.config['UPLOAD_FOLDER'], filename), fp.read())
             mail.send(msg)
             return render_template("index.html", sent = True)
-        """
         flash('No selected file')
         return redirect(request.url)
 
     return render_template("submissions.html")
 
-@app.route("/getinvolved")
-def getinvolved():
-    return render_template("getinvolved.html")
-
-#search function
 @app.route("/search")
 def search():
     ##get query
@@ -139,7 +133,7 @@ def search():
     with create_connection("TWR.db") as con:
         db = con.cursor()
         SQ = "%" + query + "%"
-        cmd = """SELECT titles, authors, descriptions, image, date FROM articles 
+        cmd = """SELECT titles, authors, descriptions, image, date, id FROM articles 
                 WHERE tags LIKE ? OR authors LIKE ? OR descriptions LIKE ? OR titles LIKE ? 
                 ORDER BY id DESC;"""
         articles = list(db.execute(cmd, (SQ, SQ, SQ, SQ)))
@@ -242,6 +236,7 @@ def post():
     authors = request.form.get("authors")
     description = request.form.get("description")
     content = request.form.get("content")
+    tags = request.form.get("tags")
     img = request.form.get("image")
     date = request.form.get("date")
 
@@ -250,7 +245,7 @@ def post():
         MAXID = list(db.execute("SELECT MAX(id) FROM articles"))
         id = MAXID[0][0] + 1
 
-        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date) VALUES (?, ?, ?, ?, ?, ?, ?);", (titles, authors, descriptions, tags, text, image, date))
+        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date) VALUES (?, ?, ?, ?, ?, ?, ?);", (title, authors, description, tags, f"static/articles/{id}.txt", img, date))
     
 
     f = open(f"static/articles/{id}.txt", "w")
@@ -265,20 +260,20 @@ def addName():
     return redirect(f"/admin_login/{name}")
 
 
-@app.route("/article/<string:articlename>")
-def article(articlename):
+@app.route("/article/<string:articleid>")
+def article(articleid):
     with create_connection("TWR.DB") as con:
         db = con.cursor()
-
-        ids = list(db.execute("SELECT id FROM articles WHERE titles = ?", (articlename,)))
-
-        if len(ids) != 1: 
-            # SHow the two article by going
-            return
+        print(articleid)
+        id = list(db.execute("SELECT id FROM articles WHERE id = ?", (articleid,)))
+        print(id)
         
-        contents = list(db.execute("SELECT titles, authors, text, image"))
-        con.commit()
-    
+        contents = list(db.execute("SELECT titles, authors, image FROM articles WHERE id = ?", id[0]))
+
     print(contents)
 
-    return render_template("article.html", contents=contents)
+    file = open(f"static/articles/{articleid}.txt", "r")
+    text = file.read()
+    file.close()
+
+    return render_template("article.html", contents=contents, text = text)
