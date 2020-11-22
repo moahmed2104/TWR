@@ -5,7 +5,7 @@ from flask_mail import Mail, Message
 import os
 import werkzeug
 from werkzeug.security import check_password_hash
-from helpers import login_required, create_connection
+from helpers import *
 import csv
 import json
 from werkzeug.utils import secure_filename
@@ -17,26 +17,23 @@ UPLOAD_FOLDER = "/uploads"
 
 
 """ ##TODO
-        finish /admin --> upload new articles add admin tags to identify uploads
         Make accounts for all admins
-        finish emails/register and send an email when someone registers
-        Create article view count (maybe a linked table in SQL)
-        make script to upload initial articles
+        Make the email have html so it looks nice
+        email all users that have signed-up whenever an article with their tag is posted "SELECT email FROM users WHERE tags LIKE '%tag_of_the_article%';" 
         Optimize for mobile
-        Make junior columnist and Ambassador Forms and pages
-        Make suggested
+        Make suggested usingg cookies and add cookie disclaimer
         add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
         mmake submissions accept files and email them
 """
 
 ## SET configurations
-app.config["MAIL_DEFAULT_SENDER"] = "moahmed2104@gmail.com"
+app.config["MAIL_DEFAULT_SENDER"] = "yelmays@icloud.com" #"moahmed2104@gmail.com"
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
-app.config["MAIL_PORT"] = 465#587
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_USE_TLS"] = False
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = "moahmed2104@gmail.com"
+app.config["MAIL_PORT"] = 587#465#
+app.config["MAIL_SERVER"] = "smtp.mail.me.com"#"smtp.gmail.com"
+app.config["MAIL_USE_TLS"] = True
+#app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = "yelmays@icloud.com"#"moahmed2104@gmail.com"
 app.config["MAIL_ASCII_ATTACHMENTS"] = True
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -62,14 +59,15 @@ def after_request(response):
 #index
 @app.route("/")
 def index():
-    with create_connection("TWR.db") as con:
+    with create_con("TWR.db") as con:
         db = con.cursor()
         ##Select 9 last articles
         content = list(db.execute("SELECT titles, authors, descriptions, image, id FROM articles ORDER BY id DESC LIMIT 9;"))
+        popular = list(db.execute("SELECT titles, id FROM articles ORDER BY count DESC LIMIT 5;"))
         con.commit()
 
     
-    return render_template("index.html", articles=content)
+    return render_template("index.html", articles=content, popular=popular)
 
 #email function
 @app.route("/email", methods =["POST"])
@@ -95,6 +93,34 @@ def mission():
             people.append(row)
     
     return render_template("execs.html", people=people)
+
+@app.route("/junior")
+def junior():
+    people = []
+    with open("static/junior.csv") as f:
+        reader = csv.DictReader(f)
+
+        for row in reader:
+            row["profile_photo"] = row["profile_photo"].rpartition('id=')[2]
+            print(row["profile_photo"].rpartition('id='))
+            print(row["fullname"], row["profile_photo"])
+            people.append(row)
+    
+    return render_template("junior.html", people=people)
+
+@app.route("/amb")
+def amb():
+    people = []
+    with open("static/amb.csv") as f:
+        reader = csv.DictReader(f)
+
+        for row in reader:
+            row["profile_photo"] = row["profile_photo"].rpartition('id=')[2]
+            print(row["profile_photo"].rpartition('id='))
+            print(row["fullname"], row["profile_photo"])
+            people.append(row)
+    
+    return render_template("amb.html", people=people)
 
 @app.route("/submissions", methods=["GET","POST"])
 def submissions():
@@ -129,7 +155,7 @@ def search():
     query = request.args.get("q")
 
     ##interact with database
-    with create_connection("TWR.db") as con:
+    with create_con("TWR.db") as con:
         db = con.cursor()
         SQ = "%" + query + "%"
         cmd = """SELECT titles, authors, descriptions, image, date, id FROM articles 
@@ -157,29 +183,29 @@ def register():
             tags = tags + ", " + tag
 
 
-    with create_connection("TWR.db") as con:
+    with create_con("TWR.db") as con:
         db = con.cursor()
-        check_cmd = "SELECT email FROM users;"  #Selecting emails from database to email
-        check = list(db.execute(check_cmd))
+        check_cmd = "SELECT id FROM users WHERE email = ?;"  #Selecting emails from database to email
+        check = list(db.execute(check_cmd, (email,)))
         checker = True
 
-        print((email,))
-
-        for comp in check:
-            print(comp)
-            if email in comp:
-                checker = False
-                print("YES!")
+        if check:
+            checker = False
+            print("YES!")
 
 
         if  checker:
+            print("HI")
             cmd = "INSERT INTO users (email, firstname, lastname, tags) VALUES (?, ?, ?, ?);"
             db.execute(cmd, (email, firstname, lastname, tags))
             con.commit()
-
+        print("passed!")
         msg = Message('TWR Subscription!', recipients = [f"{email}"])
+        print("Good Job")
         msg.body="Thank you for subscribing to The Written Revolutions email updates, you will get an email whenever there is a post related to one of the topics you are interested in."
+        print("almost there")
         mail.send(msg)
+        print("All done!")
 
     return redirect("/")
 
@@ -197,7 +223,7 @@ def admin_login(name = "NoName"):
     if request.method == "POST":
         password = request.form.get("password")
         
-        with create_connection("TWR.db") as con:
+        with create_con("TWR.db") as con:
             db = con.cursor()
 
             cmd = "SELECT hash FROM admins WHERE name = (?)"
@@ -210,7 +236,7 @@ def admin_login(name = "NoName"):
             
             return render_template("admin_login.html", name=name, failed=True)
         
-        session["user_id"] = name
+        session["admin_id"] = name
         return redirect(f"/admin/{name}")
         
     return render_template("admin_login.html", name=name)
@@ -219,10 +245,10 @@ def admin_login(name = "NoName"):
 @app.route("/admin/<string:name>")
 @login_required
 def admin(name="NoName"):
-    if name == "NoName" and session.get("user_id") is None:
+    if name == "NoName" and session.get("admin_id") is None:
         return redirect("/admin_login")
     elif name == "NoName":
-        name = session.get("user_id")
+        name = session.get("admin_id")
         redirect(f"/admin/{name}")
     return render_template("admin.html", name=name)
 
@@ -230,7 +256,7 @@ def admin(name="NoName"):
 @app.route("/post", methods=["POST"])
 @login_required
 def post():
-    name = session.get("user_id")
+    name = session.get("admin_id")
     title = request.form.get("title")
     authors = request.form.get("authors")
     description = request.form.get("description")
@@ -239,12 +265,13 @@ def post():
     img = request.form.get("image")
     date = request.form.get("date")
 
-    with create_connection("TWR.db") as con:
+    with create_con("TWR.db") as con:
         db = con.cursor()
         MAXID = list(db.execute("SELECT MAX(id) FROM articles"))
         id = MAXID[0][0] + 1
+        admin_id = list(db.execute("SELECT id FROM admins WHERE name = ?", (name, )))
 
-        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date) VALUES (?, ?, ?, ?, ?, ?, ?);", (title, authors, description, tags, f"static/articles/{id}.txt", img, date))
+        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date, admin_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", (title, authors, description, tags, f"static/articles/{id}.txt", img, date, admin_id))
     
 
     f = open(f"static/articles/{id}.txt", "w")
@@ -263,14 +290,15 @@ def addName():
 def article():
     articleid = request.args.get("articleid")
 
-    with create_connection("TWR.DB") as con:
+    with create_con("TWR.DB") as con:
         db = con.cursor()
         print(articleid)
         id = list(db.execute("SELECT id FROM articles WHERE id = ?", (articleid,)))
-        print(id)
+        print(id[0][0])
         
-        contents = list(db.execute("SELECT titles, authors, image, count FROM articles WHERE id = ?", id[0]))
-        db.execute("INSERT INTO articles (count) VALUES (?)", (int(contents[3]) + 1,))
+        contents = list(db.execute("SELECT titles, authors, image, count, date FROM articles WHERE id = ?", id[0]))
+        print(contents)
+        db.execute("UPDATE articles set count = ? WHERE id = ?", (int(contents[0][3]) + 1, id[0][0]))
 
 
 

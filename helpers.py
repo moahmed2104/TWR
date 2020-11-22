@@ -2,7 +2,7 @@ from flask import redirect, request, session
 from functools import wraps
 import sqlite3
 
-def create_connection(path):
+def create_con(path):
     connection = None
     try:
         connection = sqlite3.connect(path)
@@ -20,7 +20,7 @@ def login_required(f):
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if session.get("user_id") is None:
+        if session.get("admin_id") is None:
             return redirect("/admin_login")
         return f(*args, **kwargs)
     return decorated_function

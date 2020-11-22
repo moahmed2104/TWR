@@ -15,8 +15,10 @@
     <br>
     
     <div class="container-fluid">
-        <a href="/article?articleid={{articles[0][4]}}"><div class=center style="overflow: hidden; width: 50%; max-height: 500px;" >
-            <img class="center" src="{{ articles[0][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[0][3] }}" width="100%" style="margin-left: auto; margin-right: auto;">
+        <div class=center style="overflow: hidden; width: 50%; max-height: 500px;" >
+            <a href="/article?articleid={{articles[0][4]}}">
+                <img class="center" src="{{ articles[0][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[0][3] }}" width="100%" style="margin-left: auto; margin-right: auto;">
+            </a>
         </div>
         <a href="/article?articleid={{articles[0][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 40px;">{{ articles[0][0].title() }}</h2></a>
         <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[0][1] }}">{{ articles[0][1] }}</a></p>
@@ -26,72 +28,35 @@
     <hr style="height:2px;border-width:0;color:gainsboro;background-color:gainsboro">
 
     <div class="container-fluid" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-        <div class="row" >
-            <a href="/article?articleid={{articles[1][4]}}"><div class=col style="height: 275px; width: 215px;">
-                <div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
-                    <img class="center" src="{{ articles[1][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[1][3] }}" width="100%" style="margin-left: auto; margin-right: auto; width: 100%; height: 150px; overflow: hidden;">
-                </div>
-                <a href="/article?articleid={{articles[1][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[1][0].title() }}</h2></a>
-                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[1][1] }}">{{ articles[1][1] }}</a></p>
-            </div>
-
-            <div class=col style="height: 275px; width: 215px;">
-                <a href="/article?articleid={{articles[2][4]}}"><div class=center style="overflow: hidden; width: 100%; max-height: 150px;">
-                    <img class="center" src="{{ articles[2][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[2][3] }}" width="100%" style="margin-left: auto; margin-right: auto; width: 100%; height: 150px; overflow: hidden;">
-                </div>
-                <a href="/article?articleid={{articles[2][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[2][0].title() }}</h2></a>
-                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[2][1] }}">{{ articles[2][1] }}</a></p>
-            </div>
-
-            <div class=col style="height: 275px; width: 215px;">
-                <a href="/article?articleid={{articles[3][4]}}"><div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
-                    <img class="center" src="{{ articles[3][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[3][3] }}" width="100%" style="margin-left: auto; margin-right: auto; width: 100%; height: 150px; overflow: hidden;">
-                </div>
-                <a href="/article?articleid={{articles[3][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[3][0].title() }}</h2></a>
-                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[3][1] }}">{{ articles[3][1] }}</a></p>
-            </div>
-
-            <div class=col style="height: 275px; width: 215px;">
-                <a href="/article?articleid={{articles[4][4]}}"><div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
-                    <img class="center" src="{{ articles[4][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[4][3] }}" width="100%" style="margin-left: auto; margin-right: auto; width: 100%; height: 150px; overflow: hidden;">
-                </div>
-                <a href="/article?articleid={{articles[4][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif; ">{{ articles[4][0].title() }}</h2></a>
-                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[4][1] }}">{{ articles[4][1] }}</a></p>
-            </div>
-        </div>
         <div class="row">
-            <div class=col style="height: 275px; width: 215px;">
-                <a href="/article?articleid={{articles[5][4]}}"><div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
-                    <img class="center" src="{{ articles[5][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[1][3] }}" width="100%" style="margin-left: auto; margin-right: auto; width: auto; height: 150px; overflow: hidden;">
+            {% for i in range((articles | length) - 1) %}
+                <div class=col style="height: 275px; width: 215px;">
+                    <div class=center style="overflow: hidden; width: 100%; height: 150px;" >
+                        <a href="/article?articleid={{articles[i+1][4]}}">
+                            <img class="center" src="{{ articles[i+1][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[i +1][3] }}" height="100%" style="margin-left: auto; margin-right: auto;">
+                        </a>
+                    </div>
+                    <a href="/article?articleid={{articles[i + 1][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[i + 1][0].title() }}</h2></a>
+                    <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[i + 1][1] }}">{{ articles[i + 1][1] }}</a></p>
                 </div>
-                <a href="/article?articleid={{articles[5][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[5][0].title() }}</h2></a>
-                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[5][1] }}">{{ articles[5][1] }}</a></p>
-            </div>
+                {% if i % 4 == 3 %}
+                    </div>
+                    <div class="row">
+                {% endif %}
 
-            <div class=col style="height: 275px; width: 215px;">
-                <a href="/article?articleid={{articles[6][4]}}"><div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
-                    <img class="center" src="{{ articles[6][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[6][3] }}" width="100%" style="margin-left: auto; margin-right: auto; width: 100%; height: 150px; overflow: hidden;">
-                </div>
-                <a href="/article?articleid={{articles[6][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[6][0].title() }}</h2></a>
-                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[6][1] }}">{{ articles[6][1] }}</a></p>
-            </div>
-
-            <div class=col style="height: 275px; width: 215px;">
-                <a href="/article?articleid={{articles[7][4]}}"><div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
-                    <img class="center" src="{{ articles[7][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[7][3] }}" width="100%" style="margin-left: auto; margin-right: auto; width: 100%; height: 150px; overflow: hidden;">
-                </div>
-                <a href="/article?articleid={{articles[7][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ articles[7][0].title() }}</h2></a>
-                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[7][1] }}">{{ articles[7][1] }}</a></p>
-            </div>
-
-            <div class=col style="height: 275px; width: 215px;">
-                <a href="/article?articleid={{articles[8][4]}}"><div class=center style="overflow: hidden; width: 100%; max-height: 150px;" >
-                    <img class="center" src="{{ articles[8][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[8][3] }}" width="100%" style="margin-left: auto; margin-right: auto; width: 100%; height: 150px; overflow: hidden;">
-                </div>
-                <a href="/article?articleid={{articles[8][4]}}"><h2 style="font-family: Georgia, 'Times New Roman', Times, serif; ">{{ articles[8][0].title() }}</h2></a>
-                <p style="font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[8][1] }}">{{ articles[8][1] }}</a></p>
-            </div>
+            {% endfor %}
         </div>
     </div>
     
+{% endblock %}
+
+{% block top %}
+    <div class="container" style="z-index: 99; position: absolute; background-color: gainsboro; top: 162px; left: 30px; width: 25%; float: left">
+        <h5 style="z-index: 98;"><b style="z-index: 98;">Most Popular</b></h5>
+        <ul style="z-index: 98;">
+            {% for pop in popular %}
+                <a style="z-index: 98;" href="article?articleid={{ pop[1] }}"><li style="z-index: 98;">{{ pop[0] }}</li></a>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

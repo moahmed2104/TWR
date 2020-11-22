@@ -129,3 +129,21 @@ h1
 details summary::-webkit-details-marker {
   display:none;
 }
+
+article blockquote
+{
+  background: #f4e6cb;
+  padding: 30px;
+  color: #000000;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+
+
+article h4{
+  color: LightSlateGrey;
+}
+

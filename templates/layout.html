@@ -59,11 +59,12 @@
                         <li class="nav-item active a">
                             <a class="nav-link" href='/submissions'>Submissions</a></li>
             </div-->
-                
+               
             
             <nav class="navbar fixed-top  navbar-expand-lg navbar-dark" style="background-color:#043927;justify-content: space-evenly" id="navbar">
+                <br style="font-size: 4pt;">
                     <a href='/'><img src="static/green_text.png" onerror="this.onerror=null; this.remove();" style="width: 400px;" class="center"></a>
-
+                <br style="font-size:xx-small">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto nav-fill w-100">
                             <!--li class="nav-item active">
@@ -85,8 +86,8 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown"  style="background-color: #043927;">
                                     <a class="dropdown-item" href="/execs" style="color: white;">Executives</a>
-                                    <a class="dropdown-item" href="#" style="color: white;">Junior Columnists</a>
-                                    <a class="dropdown-item" href="#" style="color: white;">Ambassadors</a>
+                                    <a class="dropdown-item" href="/junior" style="color: white;">Junior Columnists</a>
+                                    <a class="dropdown-item" href="/amb" style="color: white;">Ambassadors</a>
                                 </div>
                             </li>
                         
@@ -101,11 +102,12 @@
                 </div>
             </nav>
         </div>
-       
-            <div class="container" style="padding: 50px; overflow-y:scroll;">
-                <br> 
-                <br>
-                <br>
+        <br>
+       {% block top %}{% endblock %}
+            <div class="container" style="padding: 50px; margin-top: 50pt;overflow-y:scroll;">
+                <!br style="font-size: 140px;">
+    
+                
                 {% block body %}{% endblock %}
             </div>
                 <div class="sticky-bottom container-fluid" style="margin: auto; text-align: center; background-color:#043927;">
