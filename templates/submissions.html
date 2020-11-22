@@ -12,8 +12,7 @@
 
     <h3> Email your submissions to <a href="mailto:thewrittenrevolutions@gmail.com">thewrittenrevolutions@gmail.com</a>
     <form style="text-align: center;" action="/submissions" method="POST" enctype="multipart/form-data">
-        <!--
-        <div style="text-align: left;">
+       <!--div style="text-align: left;">
             <label for="name">Name</label>
             <div class="form-group">
                 <input id="name" name="name" type="text" placeholder="Name">
@@ -21,19 +20,18 @@
 
             <br>
             
-            label for="email">Email</label>
+            <label for="email">Email</label>
             <div class="form-group">
                 <input id="email" name="email" type="email" placeholder="Email">
             </div>
-        </div>
-        -->
+        </div-->
         <div>
             <h2 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20pt;">Select which category your submission falls under:</h2>
         </div>
         
     
         
-        <div class="form-row">
+        <div class="form-row" style="font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif;">
 
             <div class="col" id="polit" style="text-align: center;">
                 <button type="button" class="btn btn-dark" style="margin: 30px; background-color: #043927; display: inline-block;">Political</button>
@@ -44,12 +42,12 @@
             </div>
             
             <div class="col" id="bus" style="text-align: center;">
-                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: #043927; display: inline-block;">Economics & Business</button> 
+                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: #043927; display: inline-block; font-size: 15px;">Economics/Business</button> 
             </div>    
             
             
             <div class="col" id="write" style="text-align: center;">
-                <button  type="button" class="btn btn-dark"  style="margin: 30px; background-color: #043927; display: inline-block;">Freewords</button>  
+                <button  type="button" class="btn btn-dark"  style="margin: 30px; background-color: #043927; display: inline-block;">Freewrite</button>  
             </div>    
             
             <div class="col" id="crea" style="text-align: center;">
@@ -65,8 +63,8 @@
     -->
     </form>
     
-    <div id="poli" class="ghost">
-        <h3 style="text-align: left;">Requirements</h3>
+    <div id="poli" class="ghost" style="font-size: 15px; font-family: Georgia, 'Times New Roman', Times, serif;">
+        <h3 style="text-align: left; font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif;"><u>Requirements</u></h3>
         <ul>
             <li>Formatting:
                 <ul>
@@ -95,14 +93,17 @@
 
     <div id="poem" class="ghost">
         <ul>
+            <li>Poetry</li>
+            <ul>
             <li>Include a brief analysis or author's note for your poem</li>
             <li>Formatting:
                 <ul>
-                    <li></li>
                     <li>Include a title and a by line</li>
                     <li>Font - Open Sans</li> 
                     <li>Size - 11 max, 10 min</li>
+                    <li></li>
                 </ul>
+            </ul>
             </li>
         </ul>
     </div>
@@ -128,5 +129,5 @@
 <br>
 <br>
 <br>
-
+<br>
 {% endblock %}

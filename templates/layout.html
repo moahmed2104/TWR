@@ -35,7 +35,7 @@
         </head>
         
         <body style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: normal 100%;">
-            <div class="fixed-top">
+            <!--div class="fixed-top">
                 <div class="collapse hamburger" id="navbarToggleExternalContent" style="background-color:#043927;">
                   <div class="p-4" >
                     <a class="navbar-brand" href='/'>
@@ -58,27 +58,18 @@
                                 <a class="dropdown-item" href="#">Ambassadors</a></li>
                         <li class="nav-item active a">
                             <a class="nav-link" href='/submissions'>Submissions</a></li>
-                        <li class="nav-item active a">
-                            <a class="nav-link" href='/getinvolved'>Get Involved</a></li>  
-                    </ul>
-
-                  </div>
-                    <nav class="navbar navbar-dark" >
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </nav>
-                </div>
+            </div-->
                 
-
+            
             <nav class="navbar fixed-top  navbar-expand-lg navbar-dark" style="background-color:#043927;justify-content: space-evenly" id="navbar">
+                    <a href='/'><img src="static/green_text.png" alt="The Written Revolutions" style="width: 400px;" class="center"></a>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto nav-fill w-100">
-                            <li class="nav-item active">
+                            <!--li class="nav-item active">
                                 <a class="navbar-brand" href='/'><div>
                                     <img width="50px" height="mr-auto" style="margin-top: -12px;" src="static/wtlogo.png"  alt= "TWR">
-                                    
-                                </a></li>
+                                </a></li-->
                             <li class="nav-item active">
                                 <a class="nav-link" href='/search?q=politics'>Politics</a></li>
                             <li class="nav-item active">
@@ -101,8 +92,6 @@
                         
                             <li class="nav-item active">
                                 <a class="nav-link" href='/submissions'>Submissions</a></li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href='/getinvolved'>Get Involved</a></li>  
 
                             <form class="form-inline my-2 my-lg-0" style="align-self: right;" action="/search">
                                 <input class="form-control mr-sm-2" id="q" name="q" type="search" placeholder="Search" aria-label="Search">
@@ -112,12 +101,15 @@
                 </div>
             </nav>
         </div>
+       
             <div class="container" style="padding: 50px; overflow-y:scroll;">
+                <br> 
+                <br>
                 <br>
                 {% block body %}{% endblock %}
             </div>
                 <div class="sticky-bottom container-fluid" style="margin: auto; text-align: center; background-color:#043927;">
-                    <label style="font-family: Montserrat; color: white; text-align: center;" for="email">Get email updates</label>
+                    <label style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: white; text-align: center;" for="email">Get email updates</label>
                     <div class="container-fluid" style="text-align: center;">
                         <form class="form-inline" action="/email" method="POST" style="display: inline-block;">
                             <input autocomplete="on" class="form-control email_input" id="email_input" onkeyup="check()" name="email" placeholder="Email" type="email">

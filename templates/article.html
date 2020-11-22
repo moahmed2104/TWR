@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ contents[0][0] }}
+{% endblock %}
+
+{% block body %}
+    <br>
+    <div style="overflow: hidden; width: 100%; height: 400px; align-self: center;">
+        <img src="{{ contents[0][2] }}" style="width: auto; height: 400px;">
+    </div>
+    <article >
+        <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ contents[0][0]|title }}</h1>
+        <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">By: {{ contents[0][1] }}</h2>
+        <div id="text" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+            {{ text|safe }}
+        </div>
+    </article>
+   
+
+{% endblock %}

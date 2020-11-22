@@ -15,26 +15,20 @@
         {% for i in range(people | length) %}
 
                 <div class="col">
-<<<<<<< HEAD
-=======
-                    <!div class="container"  style="display: inline-block">
-                        
->>>>>>> 4d1beb71f30c3fd1e8564c362f147c6cfe4b03f4
                         <details>
                             <summary> 
-                                <div style="overflow: hidden; height: 250px; width: 80%; margin: auto">
-                                    <img src="https://drive.google.com/uc?export=view&id={{ people[i].profile_photo }}" style="display: block; margin: auto;" width="100%" height="auto">
+                                <div style="overflow: hidden; height: 250px; width: 250px; margin: auto; border-radius: 50%;">
+                                    <img src="https://drive.google.com/uc?export=view&id={{ people[i].profile_photo }}" style="display: block; margin: auto;" width="250px" height="auto">
                                 </div>
-                                <h2>{{ people[i].fullname }}</h2>
-                                <p>{{ people[i].title }}
+                                <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ people[i].fullname }}</h2>
+                                <p style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ people[i].title }}
                             </summary>
                             
-                            <div id="{{people[i].insta_info}}" class="shown">
+                            <div id="{{people[i].insta_info}}" class="shown" style="font-family: Georgia, 'Times New Roman', Times, serif;">
                                 <p><strong><a href="https://www.instagram.com/{{people[i].insta}}">@{{ people[i].insta }}</a></strong></p>
                                 <p style="font-size: 12px;">{{ people[i].short_bio }}<p>
                             </div>
                         </details>
-               
                 </div>
             
             {% if i % 3 == 2 %}
@@ -53,5 +47,5 @@
                     {% endfor %}
             {% endif %}
         {% endfor %}
-   
+    </div>
 {% endblock %}
