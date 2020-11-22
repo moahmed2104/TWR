@@ -26,7 +26,7 @@
 
     {% else %}
 
-        <h1> Hello {{ name }}, please login.</h1>
+        <h1> Hello {{ name|capitalize }}, please login.</h1>
         <form action="/admin_login/{{ name }}" method="POST">
             <div class="form-group">
                 <label for="password">Password</label>
@@ -39,5 +39,5 @@
     {% endif %}
     
     
-    <img src="static/wtlogo.png" alt="logo" width= 100%>
+    <a href="/"><img src="static/wtlogo.png" onerror=this.src="//gmsrp.cachefly.net/images/20/05/15/65e1de275864fb9c73b7be374315481a/960.jpg" alt="logo" width= 100%></a>
 {% endblock %}

@@ -121,7 +121,7 @@
 
 h1
 {
-  text-align: center;
+  /*text-align: center;*/
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
   font-size: 30pt;
 }
