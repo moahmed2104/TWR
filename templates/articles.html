@@ -6,12 +6,22 @@
 {% endblock %}
 
 {% block body %}
+    {% if not articles %}
+        <h1 style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif; padding-bottom: 9pt;"><b>No Results For Your Search</b></h1>
+        <br style="font-size: 268px;">
+        <!--br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br-->
+    {% endif %}
     {% for i in range(articles | length) %}
         <div class=row style="max-height: 350px; font-family: Georgia, 'Times New Roman', Times, serif;">
             {% if i % 2 == 0 %}
+                
                 <div class=col style="overflow: hidden; width: 50%; max-height: 350px;">
-                    <img src="{{ articles[i][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[i][3] }}" width="100%">
+                    <a href="/article?articleid={{ articles[i][5] }}"> 
+                        <img src="{{ articles[i][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[i][3] }}" width="100%">
+                    </a>
                 </div>
+                
                 
                 <div class="col">
                     <!-- MAKE TITLE a link and authors a search -->
@@ -28,10 +38,13 @@
                     <p style="font-size: 12pt; color: #798EA4;  margin-top: -7px;">{{ articles[i][4] }}</p>
                     <p style="font-size: 11pt; margin-top: -7px; color: rgb(61, 59, 59)">{{ articles[i][2] }}</p>
                 </div>
-
+            
                 <div class=col style="overflow: hidden; width: 50%; max-height: 300px;">
-                    <img src="{{ articles[i][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[i][3] }}" height="auto" width="100%">
+                    <a href="/article?articleid={{ articles[i][5] }}">
+                        <img src="{{ articles[i][3] }}" onerror="this.src='static/white_logo_text.png'" alt="{{ articles[i][3] }}" height="auto" width="100%">
+                    </a>
                 </div>
+            
             {% endif %}
         </div>
 

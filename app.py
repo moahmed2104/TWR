@@ -269,7 +269,10 @@ def article():
         id = list(db.execute("SELECT id FROM articles WHERE id = ?", (articleid,)))
         print(id)
         
-        contents = list(db.execute("SELECT titles, authors, image FROM articles WHERE id = ?", id[0]))
+        contents = list(db.execute("SELECT titles, authors, image, count FROM articles WHERE id = ?", id[0]))
+        db.execute("INSERT INTO articles (count) VALUES (?)", (int(contents[3]) + 1,))
+
+
 
     print(contents)
 
