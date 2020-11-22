@@ -19,7 +19,6 @@ UPLOAD_FOLDER = "/uploads"
 """ ##TODO
         finish /admin --> upload new articles add admin tags to identify uploads
         Make accounts for all admins
-        DO get involved
         finish emails/register and send an email when someone registers
         Create article view count (maybe a linked table in SQL)
         make script to upload initial articles
@@ -260,8 +259,10 @@ def addName():
     return redirect(f"/admin_login/{name}")
 
 
-@app.route("/article/<string:articleid>")
-def article(articleid):
+@app.route("/article")#/<string:articleid>")
+def article():
+    articleid = request.args.get("articleid")
+
     with create_connection("TWR.DB") as con:
         db = con.cursor()
         print(articleid)

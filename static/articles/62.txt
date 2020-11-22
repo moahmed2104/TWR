@@ -1,0 +1,3 @@
+this is the test article
+
+<blockquote style="display: block; text-align: center; background: #f4e6cb; padding: 30px; color: #000000;"><span style="font-family: helvetica; font-size: x-large;"><b>Hanson's Articles are too annoying to render</b></span></blockquote>
