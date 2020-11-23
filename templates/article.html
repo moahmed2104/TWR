@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    {{ contents[0][0] }}
+    {{ contents[0][0]|title }}
 {% endblock %}
 
 {% block body %}
-    <br>
     <article style="margin:auto">
         <div style="overflow: hidden; width: 80%; height: 450px; margin: auto">
             <img src="{{ contents[0][2] }}" style="width: 100%; height: auto;">

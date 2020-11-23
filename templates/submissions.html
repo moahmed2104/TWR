@@ -6,12 +6,12 @@
 {% endblock %}
 
 {% block body %}
-    <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30pt;">Submit your work to be published!</h1>
+    <h1 style="text-align: center; font-family: 'Playfair Display', sans-serif; font-size: 30pt;">Submit your work to be published!</h1>
     <br>
     <br>
 
-    <h3> Email your submissions to <a href="mailto:thewrittenrevolutions@gmail.com">thewrittenrevolutions@gmail.com</a>
-    <form style="text-align: center;" action="/submissions" method="POST" enctype="multipart/form-data">
+    <h3 style="font-family: 'Playfair Display', sans-serif; margin-bottom: 30px;"> Email your submissions to <a href="mailto:thewrittenrevolutions@gmail.com">thewrittenrevolutions@gmail.com</a>
+    <form action="/submissions" method="POST" enctype="multipart/form-data">
        <!--div style="text-align: left;">
             <label for="name">Name</label>
             <div class="form-group">
@@ -26,33 +26,29 @@
             </div>
         </div-->
         <div>
-            <h2 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20pt;">Select which category your submission falls under:</h2>
+            <h2 style="text-align: center; font-family: 'Playfair Display', sans-serif; font-size: 20pt;">Select which category your submission falls under:</h2>
         </div>
         
     
         
-        <div class="form-row" style="font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif;">
+        <div class="form-row" style="font-size: 20px; font-family: 'Playfair Display'">
 
             <div class="col" id="polit" style="text-align: center;">
-                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: #043927; display: inline-block;">Political</button>
+                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: black; display: inline-block;">Political</button>
             </div> 
 
-            <div class="col" id="poe" style="text-align: center;">
-                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: #043927; display: inline-block;">Poetry</button>  
+            <div class="col" id="creat" style="text-align: center;">
+                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: black; display: inline-block;">Creative</button>  
             </div>
             
             <div class="col" id="bus" style="text-align: center;">
-                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: #043927; display: inline-block; font-size: 15px;">Economics/Business</button> 
+                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: black; display: inline-block; font-size: 15px;">Economics/Business</button> 
             </div>    
             
             
             <div class="col" id="write" style="text-align: center;">
-                <button  type="button" class="btn btn-dark"  style="margin: 30px; background-color: #043927; display: inline-block;">Freewrite</button>  
+                <button  type="button" class="btn btn-dark"  style="margin: 30px; background-color:black; display: inline-block;">Freewrite</button>  
             </div>    
-            
-            <div class="col" id="crea" style="text-align: center;">
-                <button type="button" class="btn btn-dark" style="margin: 30px; background-color: #043927; display: inline-block;">Creative</button>    
-            </div> 
         </div>
     
         <!--
@@ -63,8 +59,8 @@
     -->
     </form>
     
-    <div id="poli" class="ghost" style="font-size: 15px; font-family: Georgia, 'Times New Roman', Times, serif;">
-        <h3 style="text-align: left; font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif;"><u>Requirements</u></h3>
+    <div id="poli" class="ghost" style="font-size: 15px; font-family: 'Playfair Display'">
+        <h3 style="text-align: left; font-size: 20px; font-family: 'Playfair Display'"><u>Requirements</u></h3>
         <ul>
             <li>Formatting:
                 <ul>
@@ -91,34 +87,37 @@
         </ul>
     </div>
 
-    <div id="poem" class="ghost">
+    <div id="creative" class="ghost" style="font-size: 15px; font-family: 'Playfair Display'">
+        <h3 style="text-align: left; font-size: 20px; font-family: 'Playfair Display'"><u>Requirements</u></h3>
         <ul>
-            <li>Poetry</li>
+            <li>Poetry
             <ul>
             <li>Include a brief analysis or author's note for your poem</li>
-            <li>Formatting:
-                <ul>
-                    <li>Include a title and a by line</li>
-                    <li>Font - Open Sans</li> 
-                    <li>Size - 11 max, 10 min</li>
-                    <li></li>
-                </ul>
+                <li>Formatting:
+                    <ul>
+                        <li>Include a title and a by line</li>
+                        <li>Font - Open Sans</li> 
+                        <li>Size - 11 max, 10 min</li>
+                    </ul>
+                </li>
+            </ul> 
+                <li>Photography/Film
+                    <ul>
+                        <li>Ensure that the image or film is your own.</li>
+                        <li>For photos submit both the edited and unedited version</li>
+                        <li>Give a brief description and a caption with your submission</li>
+                    </ul>
+                </li>
             </ul>
-            </li>
-        </ul>
     </div>
 
     <div id="econ" class="ghost">
-        Requirements
+        <h3 style="text-align: left; font-size: 20px; font-family: 'Playfair Display'"><u>Requirements</u></h3>
     </div>
             
     <div id="free" class="ghost">
-        Requirements
+        <h3 style="text-align: left; font-size: 20px; font-family: 'Playfair Display'"><u>Requirements</u></h3>
     </div>  
-    
-    <div id="creative" class="ghost">
-        Requirements
-    </div>
 
 <script src="static/sub.js"></script>
 

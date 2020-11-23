@@ -27,13 +27,13 @@ UPLOAD_FOLDER = "/uploads"
 """
 
 ## SET configurations
-app.config["MAIL_DEFAULT_SENDER"] = "yelmays@icloud.com" #"moahmed2104@gmail.com"
+app.config["MAIL_DEFAULT_SENDER"] = "thewrittenrevolutions@gmail.com"#"yelmays@icloud.com" #"moahmed2104@gmail.com"
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
 app.config["MAIL_PORT"] = 587#465#
-app.config["MAIL_SERVER"] = "smtp.mail.me.com"#"smtp.gmail.com"
+app.config["MAIL_SERVER"] = "smtp.gmail.com"#"smtp.mail.me.com"#
 app.config["MAIL_USE_TLS"] = True
 #app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = "yelmays@icloud.com"#"moahmed2104@gmail.com"
+app.config["MAIL_USERNAME"] = "thewrittenrevolutions@gmail.com"#"yelmays@icloud.com"#"moahmed2104@gmail.com"
 app.config["MAIL_ASCII_ATTACHMENTS"] = True
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -62,11 +62,14 @@ def index():
     with create_con("TWR.db") as con:
         db = con.cursor()
         ##Select 9 last articles
-        content = list(db.execute("SELECT titles, authors, descriptions, image, id FROM articles ORDER BY id DESC LIMIT 9;"))
-        popular = list(db.execute("SELECT titles, id FROM articles ORDER BY count DESC LIMIT 5;"))
+        db.execute("SELECT titles, authors, descriptions, image, id, date FROM articles ORDER BY id DESC LIMIT 5;")
+        content = db.fetchall()
         con.commit()
 
-    
+        db.execute("SELECT  titles, authors, descriptions, image, id, date FROM articles ORDER BY count DESC LIMIT 3;")
+        popular = db.fetchall()
+        con.commit()
+
     return render_template("index.html", articles=content, popular=popular)
 
 #email function
@@ -227,7 +230,7 @@ def admin_login(name = "NoName"):
             db = con.cursor()
 
             cmd = "SELECT hash FROM admins WHERE name = (?)"
-            dbname = (name, )
+            dbname = (str(name).lower(), )
 
             hashstring = list(db.execute(cmd, dbname))
             con.commit()

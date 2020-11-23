@@ -17,7 +17,15 @@
             
             <link rel="stylesheet" media="screen and (min-width: 600px)" href="static/widescreen.css">
             <link rel="stylesheet" media="screen and (max-width: 599px)" href="static/smallscreen.css">
+
+            <!-- Upload Alazne Fonts -->
+            <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+            <link href='https://fonts.googleapis.com/css?family=Playfair Display SC' rel='stylesheet'>
+            <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
             <link rel="stylesheet" href="static/styles.css">
+
+            {% block extraStyle %}{% endblock %}
 
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -34,7 +42,7 @@
 
         </head>
         
-        <body style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: normal 100%;">
+        <body class="cool_background" style="font-family: 'Playfair Display'; /*font-family: Lato, sans-serif; font-size: normal 100%;*/">
             <!--div class="fixed-top">
                 <div class="collapse hamburger" id="navbarToggleExternalContent" style="background-color:#043927;">
                   <div class="p-4" >
@@ -61,16 +69,17 @@
             </div-->
                
             
-            <nav class="navbar fixed-top  navbar-expand-lg navbar-dark" style="background-color:#043927;justify-content: space-evenly" id="navbar">
+            <nav class="navbar fixed-top  navbar-expand-lg navbar-dark" style="background-color:#000000;justify-content: space-evenly" id="navbar">
                 <br style="font-size: 4pt;">
-                    <a href='/'><img src="static/green_text.png" onerror="this.onerror=null; this.remove();" style="width: 400px;" class="center"></a>
-                <br style="font-size:xx-small">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto nav-fill w-100">
-                            <!--li class="nav-item active">
-                                <a class="navbar-brand" href='/'><div>
-                                    <img width="50px" height="mr-auto" style="margin-top: -12px;" src="static/wtlogo.png"  alt= "TWR">
-                                </a></li-->
+                            
+                                <div>
+                                    <a class="navbar-brand" href='/'>
+                                    <br style="font-size: xx-small">
+                                <img width="50px" height="mr-auto" style="margin-top: -12px;" src="static/wtlogo.png"  alt= "TWR">
+                                </a>
+                            </div>
                             <li class="nav-item active">
                                 <a class="nav-link" href='/search?q=politics'>Politics</a></li>
                             <li class="nav-item active">
@@ -79,12 +88,11 @@
                                 <a class="nav-link" href='/search?q=business'>Business & Economics</a></li>
                             <li class="nav-item active">
                                 <a class="nav-link" href='/ourmission'>Mission</a></li>
-                        
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
                                 Our Team
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown"  style="background-color: #043927;">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown"  style="background-color: #000000;">
                                     <a class="dropdown-item" href="/execs" style="color: white;">Executives</a>
                                     <a class="dropdown-item" href="/junior" style="color: white;">Junior Columnists</a>
                                     <a class="dropdown-item" href="/amb" style="color: white;">Ambassadors</a>
@@ -95,8 +103,8 @@
                                 <a class="nav-link" href='/submissions'>Submissions</a></li>
 
                             <form class="form-inline my-2 my-lg-0" style="align-self: right;" action="/search">
-                                <input class="form-control mr-sm-2" id="q" name="q" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn btn-outline-light" type="submit">Search</button>
+                                <input class="form-control  mr-sm-2" id="q" name="q" type="search" placeholder="Search" placeholded-color="white" aria-label="Search" style="background-color:#000000">
+                                <button class="btn btn btn-outline-light" type="submit"><svg style="height:1.2em;" viewBox="0 0 12 13"><g stroke-width="2"  stroke="white" fill="none"><path d="M11.29 11.71l-4-4"/><circle style="color: white" cx="5" cy="5" r="4"/></g></svg></button>
                             </form>
                         </ul>                
                 </div>
@@ -104,18 +112,17 @@
         </div>
         <br>
        {% block top %}{% endblock %}
-            <div class="container" style="padding: 50px; margin-top: 50pt;overflow-y:scroll;">
-                <!br style="font-size: 140px;">
-    
-                
+
+       {% block index %}{% endblock %}
+            <div class="container index-ghost" style="padding: 50px; margin-top: 50pt;overflow-y:scroll;">
                 {% block body %}{% endblock %}
             </div>
-                <div class="sticky-bottom container-fluid" style="margin: auto; text-align: center; background-color:#043927;">
-                    <label style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: white; text-align: center;" for="email">Get email updates</label>
+                <div class="sticky-bottom container-fluid" style="margin: auto; text-align: center; background-color:#ffffff;">
+                    <label style="font-family: 'Playfair Display'; color: #000000; text-align: center;" for="email">Get email updates</label>
                     <div class="container-fluid" style="text-align: center;">
                         <form class="form-inline" action="/email" method="POST" style="display: inline-block;">
                             <input autocomplete="on" class="form-control email_input" id="email_input" onkeyup="check()" name="email" placeholder="Email" type="email">
-                            <button class="btn btn-sm email_submit" type="submit" value="submit" disabled="disabled" id="submitbutton" onclick="return check2();" style="background-color: #043927; padding-left: -10pt; margin-bottom: 5px;"><i class='fa fa-envelope'></i></button>
+                            <button class="btn btn-sm email_submit" type="submit" value="submit" disabled="disabled" id="submitbutton" onclick="return check2();" style="background-color: #ffffff; padding-left: -10pt; margin-bottom: 5px;"><i class='fa fa-envelope' style="color: black"></i></button>
                             <div style='clear:both;'></div>
                             <input name='uri' type='hidden' value='thewrittenrevolutions/uwot'/>
                             <input name='loc' type='hidden' value='en_US'/>
@@ -138,7 +145,7 @@
                         }
                     </script>
 
-                    <div class="container-fluid sticky-bottom" style="margin: auto; margin-top: -10px ;text-align: center;">
+                    <div class="container-fluid sticky-bottom" style="margin: auto; margin-top: -10px ;text-align: center; color: black">
                         <a href='https://www.instagram.com/thewrittenrevolutions' target='_blank'><i class='fa fa-instagram'></i></a>
                         <a href='https://www.facebook.com/thewrittenrevolutions' target='_blank'><i class='fa fa-facebook-f'></i></a>
                         <a href='https://www.linkedin.com/company/the-written-revolutions/' target='_blank'><i class='fa fa-linkedin'></i></a>

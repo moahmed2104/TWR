@@ -6,7 +6,7 @@ if len(argv) != 3:
     exit("USAGE: python3 setadmins [NAME] [PASSWORD]")
 
 
-name = argv[1]
+name = argv[1].lower()
 password = generate_password_hash(argv[2])
 
 with sqlite3.connect("TWR.db") as con:

@@ -47,7 +47,7 @@
     width: 50px;
     text-align: center;
     text-decoration: none;
-    color: white;
+    color: black;
     background-color: transparent;
   }
 
@@ -132,14 +132,12 @@ details summary::-webkit-details-marker {
 
 article blockquote
 {
-  background: #f4e6cb;
+  background: #c2d6d6;
   padding: 30px;
-  color: #000000;
+  color: #454545;
   display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
+  width: 100%;
+  margin: auto;
 }
 
 
@@ -147,7 +145,33 @@ article h4{
   color: LightSlateGrey;
 }
 
-li::before
+article p
 {
-  content: "";
+  line-height: .9;
+  text-align: justify;
+}
+
+div.article1
+{
+  background-color: rgba(0,0,0,.7);
+
+}
+div.article1 h1, div.article1 h3, div.article1 p
+{
+  color: #ffffff;
+}
+
+div.article1:hover
+{
+  background-color: rgba(0,0,0,1);
+}
+
+#q::placeholder, #q
+{
+  color: white;
+}
+
+#q:focus
+{
+  border: 1px solid white;
 }
