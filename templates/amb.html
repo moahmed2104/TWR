@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Our Team
+{% endblock %}
+
+{% block body %}
+    <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30pt;"><u>__Ambassadors__</u></h1>
+    
+    <br>
+    <br>
+    
+    <div class="row">
+        {% for i in range(people | length) %}
+
+                <div class="col"> 
+                    <div style="overflow: hidden; height: 185px; width: 185px; margin: auto; border-radius: 50%;">
+                        <img src="https://drive.google.com/uc?export=view&id={{ people[i].profile_photo }}" style="display: block; margin: auto;" width=100%>
+                    </div>
+                    <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ people[i].fullname }}</h2>
+                    
+                    <p><strong><a href="https://www.instagram.com/{{people[i].insta}}">@{{ people[i].insta }}</a></strong></p>
+                </div>
+            
+            {% if i % 4 == 3 %}
+                </div>
+                <br>
+                <br>
+                <div class="row">
+            {% endif %}
+            
+            <!--If last person is printed-->
+            {% if i == (people | length) - 1%}
+                    <!--loop and add empty cols-->
+                    {% for j in range(0, 3) %}
+                        {% if (i + j) % 4 == 3 %}
+                            </div> 
+                        {% else %}
+                            <div class="col"></div>
+                        {% endif %}
+                    {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
