@@ -34,7 +34,7 @@
     
     <div class="container-fluid" style="font-family: 'Playfair Display'; background-color: #000000; height: fit-content;color: #ffffff">
         <br style="font-size: 20pt">
-        <label><h1 style="font-family: 'Playfair Display';">Latest</h1></label>
+        <label><h1 style="font-family: 'Prata';">Latest</h1></label>
         <div class="row" style=" font-family: 'Playfair Display';">
             {% for i in range((articles | length) - 2) %}
                 <div class=col style=" height: fit-content; font-family: 'Playfair Display'; width: 32%">
@@ -58,7 +58,7 @@
         <div class="container-fluid"  style="display: block; overflow: hidden; height: 600px; background-image: url({{ articles[1][3] }}); background-size: cover; background-repeat: no-repeat; margin-top: 38px;">
             <div class="container article1" style="position: absolute; float: left; top: 1550px; width: fit-content; max-width: 40%; font-family: 'Playfair Display';">
                 <h1 style="font-family: 'Playfair Display';">{{ articles[1][0].title() }}</h1>
-                <p style="font-family: 'Open Sans', sans-serif; font-size: 13pt; margin-top: -7px;">By: <a href="/search?q={{ articles[1][1] }}">{{ articles[1][1] }}</a></p>
+                <p style="font-family: 'Open Sans', sans-serif; font-size: 13pt; margin-top: -7px;">By: {{ articles[1][1] }}</p>
                 <p style="font-family: 'Open Sans', sans-serif;">{{ articles[1][2][:210].strip(".").strip(" ") }}...</p>
                 <p style="font-family: 'Open Sans', sans-serif; font-size: 10pt; margin-top: -7px; color: #999999;">{{ articles[1][5] }}</p>
             </div> 
@@ -67,7 +67,7 @@
 
     <div class="container-fluid" style="font-family: 'Playfair Display'; background-color: #000000; height: fit-content;color: #ffffff">
         <br style="font-size: 20pt">
-        <label><h1 style="font-family: 'Playfair Display';">Popular</h1></label>
+        <label><h1 style="font-family: 'Prata';">Popular</h1></label>
         <div class="row" style=" font-family: 'Playfair Display'; margin-bottom: 45pt;">
             {% for i in range((popular | length)) %}
                 <div class=col style=" height: fit-content; font-family: 'Playfair Display'; width: 32%">

@@ -3,7 +3,24 @@
     background-color: #000000;
 }
 
+.indexcolor
+{
+    background-color: #ffffff;
+    color: black;
+}
+
 .index-ghost
 {
     display: none;
 }
+
+.fa 
+{
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+  }

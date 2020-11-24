@@ -117,12 +117,12 @@
             <div class="container index-ghost" style="padding: 50px; margin-top: 50pt;overflow-y:scroll;">
                 {% block body %}{% endblock %}
             </div>
-                <div class="sticky-bottom container-fluid" style="margin: auto; text-align: center; background-color:#ffffff;">
-                    <label style="font-family: 'Playfair Display'; color: #000000; text-align: center;" for="email">Get email updates</label>
+                <div class="sticky-bottom container-fluid indexcolor default_footer" style="margin: auto; text-align: center;">
+                    <label  style="font-family: 'Playfair Display'; text-align: center;" for="email">Get email updates</label>
                     <div class="container-fluid" style="text-align: center;">
                         <form class="form-inline" action="/email" method="POST" style="display: inline-block;">
                             <input autocomplete="on" class="form-control email_input" id="email_input" onkeyup="check()" name="email" placeholder="Email" type="email">
-                            <button class="btn btn-sm email_submit" type="submit" value="submit" disabled="disabled" id="submitbutton" onclick="return check2();" style="background-color: #ffffff; padding-left: -10pt; margin-bottom: 5px;"><i class='fa fa-envelope' style="color: black"></i></button>
+                            <button class="btn btn-sm email_submit" type="submit" value="submit" disabled="disabled" id="submitbutton" onclick="return check2();" style=" padding-left: -10pt; margin-bottom: 5px;"><i class='fa fa-envelope'></i></button>
                             <div style='clear:both;'></div>
                             <input name='uri' type='hidden' value='thewrittenrevolutions/uwot'/>
                             <input name='loc' type='hidden' value='en_US'/>
@@ -145,7 +145,7 @@
                         }
                     </script>
 
-                    <div class="container-fluid sticky-bottom" style="margin: auto; margin-top: -10px ;text-align: center; color: black">
+                    <div class="container-fluid sticky-bottom" style="margin: auto; margin-top: -10px; text-align: center">
                         <a href='https://www.instagram.com/thewrittenrevolutions' target='_blank'><i class='fa fa-instagram'></i></a>
                         <a href='https://www.facebook.com/thewrittenrevolutions' target='_blank'><i class='fa fa-facebook-f'></i></a>
                         <a href='https://www.linkedin.com/company/the-written-revolutions/' target='_blank'><i class='fa fa-linkedin'></i></a>
