@@ -1,7 +1,38 @@
-#hamburger{
+.hamburger{
     
   display: none;
 }
 #navbar{
   display: block;
+}
+
+.contains_img
+{
+  max-height: 350px;
+}
+
+.index_img
+{
+  height: 225px; 
+}
+
+#wirecard
+{
+  top: 1553px;
+}
+
+.execs
+{
+  font-size: 30pt;
+}
+
+#body
+{
+  padding: 50px;
+}
+
+
+.article
+{
+  width: 85%;
 }

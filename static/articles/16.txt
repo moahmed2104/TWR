@@ -1,0 +1,42 @@
+﻿<div style="line-height: 1.5;">
+<div style="line-height: 1.5;">
+<span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif; line-height: 1.5;">Last week, I received my third CERB payment in my bank account (hooray!). The next mission was deciding on where this money should go; so the next day, I set up a pre-authorized debit (PAD) to a smaller credit union that offers higher rates on investments. Two thousand dollars in cash to be transferred from my primary chequing to my “hidden” savings in three to five business days. A day after my transfer posted, I logged in to perform my daily check to make sure no unauthorized transactions appeared, send an e-transfer, and make sure the rest of my money is still there. But when I did this, my account was in the negative – I forgot to transfer the $2000 from my savings to my chequing in preparation for the PAD. No big deal I thought, as I transferred it over and everything was solved; Or so I thought. A day later an overdraft fee and interest payment were automatically deducted (for clarification, I’m a minor and shouldn’t be over-drafting on my account).</span></div>
+</div>
+<div style="line-height: 1.5;">
+<span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif; line-height: 1.5;"><br /></span></div>
+<div style="line-height: 1.5;">
+<span id="docs-internal-guid-b8d48c59-7fff-5465-451a-35117c5548e0" style="line-height: 1.5;"><span style="line-height: 1.5; vertical-align: baseline; white-space: pre-wrap;"><span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif; line-height: 1.5;">This clearly is no accident even though, to my understanding no minor’s account should never go into the negatives. Let’s be clear, my overdraft fee was minuscule compared to the average overdraft fee of $33 (source: bank rate). But banks have many tricks up their sleeves in order to milk bank fees out of their clients. </span></span></span></div>
+<div style="line-height: 1.5;">
+<span style="line-height: 1.5;"><span style="font-family: &quot;times new roman&quot;; line-height: 1.5; vertical-align: baseline; white-space: pre-wrap;"><span style="font-size: x-small; line-height: 1.5;"><br /></span></span></span></div>
+<div style="line-height: 1.5;">
+<span style="font-variant-east-asian: normal; font-variant-numeric: normal; line-height: 1.5; vertical-align: baseline; white-space: pre-wrap;"><b><span style="font-family: &quot;arial&quot;; font-size: x-large;">I </span></b><span style="font-family: &quot;times new roman&quot;; font-size: 18pt;">The average Canadian pays $220 </span></span><span style="font-family: &quot;times new roman&quot;; font-size: 18pt; line-height: 1.5; white-space: pre-wrap;">each year in bank fees</span></div>
+<div style="line-height: 1.5;">
+<span style="font-family: &quot;times new roman&quot;; font-size: 11pt; white-space: pre-wrap;"><br /></span></div>
+<div style="line-height: 1.5;">
+<span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif; line-height: 1.5; white-space: pre-wrap;">In the beginning, I mentioned that we’ve all experienced some sort of close to zero instance in our chequing accounts. Say today you’re going to the mall and doing a quick grocery run for your mom; your opening balance that day is $45.00 and you spend $40.00 on a sweater, then receive a $50.00 transfer from your mom for groceries, then spend $35.00 on groceries. Banks in some instances will reorder the transactions so instead of your account never going into the negative, they’ll change the order, so the system thinks you spend $75 (going negative by $30) then you receive a $50 transfer after your account went negative. Now you’re out $35 on an overdraft charge, in some instances you could also be charged an NSF fee of around $45, and a few bucks on the ~20% interest rate applied onto the $30 overdraft.</span></div>
+<div style="line-height: 1.5;">
+<span style="line-height: 1.5;"><span style="line-height: 1.5; vertical-align: baseline; white-space: pre-wrap;"><span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif; font-size: xx-small;"><br /></span></span></span></div>
+<div style="line-height: 1.5;">
+<span id="docs-internal-guid-b96e5644-7fff-b904-9261-0bf722d5a431" style="line-height: 1.5;"><span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif; line-height: 1.5; vertical-align: baseline; white-space: pre-wrap;">Let’s get some facts straight; transaction reordering is 100% legal, NSF fees can damage your credit history for up to 6 years, and if NSF fees are consistently being recorded on cheque payments you can be criminally charged for fraud. This isn’t just about losing money. </span></span></div>
+<div style="line-height: 1.5;">
+<span style="line-height: 1.5;"><span style="font-family: &quot;times new roman&quot;; font-size: 11pt; line-height: 1.5; vertical-align: baseline; white-space: pre-wrap;"><br /></span></span></div>
+<div style="line-height: 1.5;">
+<span style="font-family: &quot;times new roman&quot;; line-height: 1.5; vertical-align: baseline; white-space: pre-wrap;"><b><span style="font-family: &quot;arial&quot;; font-size: x-large;">I </span></b><span style="font-size: 18pt;">My life motto will always be: </span></span><span style="font-family: &quot;times new roman&quot;; font-size: 18pt; white-space: pre-wrap;">if you don’t ask, you don’t get.</span><br />
+<br /></div>
+<div style="line-height: 1.5;">
+<div style="line-height: 1.5;">
+<div dir="ltr" style="line-height: 1.5; margin-bottom: 0pt; margin-top: 0pt;">
+<span id="docs-internal-guid-cd98fbbf-7fff-e491-3b95-5932a1f016e9" style="line-height: 1.5;"><span id="docs-internal-guid-f5d417b0-7fff-391f-d022-baa8a154bc60" style="line-height: 1.5;"><span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif; line-height: 1.5; vertical-align: baseline; white-space: pre-wrap;">Call me a “Karen” if you want, but picking up the phone with your bank (or any company for that matter) when you’ve been clearly violated from a moral and ethical perspective will, in most instances, change the conclusion of the matter. Assuming you’re in good standing with the bank and not rude on the phone, most banks will reverse the fees.&nbsp;</span></span></span></div>
+<span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif;"><span id="docs-internal-guid-cd98fbbf-7fff-e491-3b95-5932a1f016e9" style="line-height: 1.5;"><span id="docs-internal-guid-f5d417b0-7fff-391f-d022-baa8a154bc60" style="line-height: 1.5;"><span style="font-size: xx-small;"><br /></span></span></span>
+</span><br />
+<div dir="ltr" style="line-height: 1.5; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif;"><span style="white-space: pre-wrap;">Be clear, assertive, and nice; mention what occurred (give the specific fee that was charged and the date it was charged) and ask “Can you do anything for me? Like refunding the service fee in full?”. If you’re met with a sub-par resolution, email your banking relationship manager and see what they can do for you. This is how I’ve gotten fees refunded to me.&nbsp;</span></span></div>
+<span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif;"><span id="docs-internal-guid-cd98fbbf-7fff-e491-3b95-5932a1f016e9" style="line-height: 1.5;"><span id="docs-internal-guid-f5d417b0-7fff-391f-d022-baa8a154bc60" style="line-height: 1.5;">
+</span></span>
+</span><br />
+<div>
+<span id="docs-internal-guid-cd98fbbf-7fff-e491-3b95-5932a1f016e9" style="line-height: 1.5;"><span id="docs-internal-guid-f5d417b0-7fff-391f-d022-baa8a154bc60" style="line-height: 1.5;"><span style="font-family: &quot;times new roman&quot;; font-size: 11pt; vertical-align: baseline; white-space: pre-wrap;"><br /></span></span></span></div>
+<span id="docs-internal-guid-cd98fbbf-7fff-e491-3b95-5932a1f016e9" style="line-height: 1.5;"><span id="docs-internal-guid-f5d417b0-7fff-391f-d022-baa8a154bc60" style="line-height: 1.5;">
+</span></span></div>
+</div>
+</div>

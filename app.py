@@ -20,10 +20,11 @@ UPLOAD_FOLDER = "/uploads"
         Make accounts for all admins
         Make the email have html so it looks nice
         email all users that have signed-up whenever an article with their tag is posted "SELECT email FROM users WHERE tags LIKE '%tag_of_the_article%';" 
-        Optimize for mobile
-        Make suggested usingg cookies and add cookie disclaimer
-        add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
-        mmake submissions accept files and email them
+        
+        Post Production:
+            Make suggested usingg cookies and add cookie disclaimer
+            add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
+            mmake submissions accept files and email them
 """
 
 ## SET configurations
@@ -267,6 +268,8 @@ def post():
     tags = request.form.get("tags")
     img = request.form.get("image")
     date = request.form.get("date")
+
+    email_tags = request.form.getlist("email_tags")
 
     with create_con("TWR.db") as con:
         db = con.cursor()
