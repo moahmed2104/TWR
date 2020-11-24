@@ -47,7 +47,7 @@
     width: 50px;
     text-align: center;
     text-decoration: none;
-    color: black;
+    color: white;
     background-color: transparent;
   }
 
@@ -174,4 +174,10 @@ div.article1:hover
 #q:focus
 {
   border: 1px solid white;
+}
+
+.default_footer
+{
+  background-color: black;
+  color: white;
 }
