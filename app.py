@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, session, flash
+from flask import Flask, redirect, render_template, request, session, flash, url_for
 from tempfile import mkdtemp
 from flask_session import Session
 from flask_mail import Mail, Message
@@ -9,6 +9,7 @@ from helpers import *
 import csv
 import json
 from werkzeug.utils import secure_filename
+from itsdangerous import URLSafeSerializer, BadData
 
 app = Flask(__name__)
 mail = Mail(app)
@@ -18,9 +19,7 @@ UPLOAD_FOLDER = "/uploads"
 
 """ ##TODO
         Make accounts for all admins
-        Make the email have html so it looks nice
-        email all users that have signed-up whenever an article with their tag is posted "SELECT email FROM users WHERE tags LIKE '%tag_of_the_article%';" 
-        
+
         Post Production:
             Make suggested usingg cookies and add cookie disclaimer
             add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
@@ -28,13 +27,13 @@ UPLOAD_FOLDER = "/uploads"
 """
 
 ## SET configurations
-app.config["MAIL_DEFAULT_SENDER"] = "thewrittenrevolutions@gmail.com"#"yelmays@icloud.com" #"moahmed2104@gmail.com"
+app.config["MAIL_DEFAULT_SENDER"] = "yelmays@icloud.com" #"moahmed2104@gmail.com"#"thewrittenrevolutions@gmail.com"#
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
-app.config["MAIL_PORT"] = 587#465#
-app.config["MAIL_SERVER"] = "smtp.gmail.com"#"smtp.mail.me.com"#
+app.config["MAIL_PORT"] = 587#465
+app.config["MAIL_SERVER"] = "smtp.mail.me.com"#"smtp.gmail.com"
 app.config["MAIL_USE_TLS"] = True
 #app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = "thewrittenrevolutions@gmail.com"#"yelmays@icloud.com"#"moahmed2104@gmail.com"
+app.config["MAIL_USERNAME"] = "yelmays@icloud.com"#"thewrittenrevolutions@gmail.com"#"moahmed2104@gmail.com"
 app.config["MAIL_ASCII_ATTACHMENTS"] = True
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -203,10 +202,14 @@ def register():
             cmd = "INSERT INTO users (email, firstname, lastname, tags) VALUES (?, ?, ?, ?);"
             db.execute(cmd, (email, firstname, lastname, tags))
             con.commit()
+
+        s = URLSafeSerializer("HANS6NS_Art?icles_>ARE_OF_The_hi/ghest_/Quality/", salt='unsubscribe')
+        token = s.dumps(email)
+        url = url_for('unsub', token=token)
         print("passed!")
         msg = Message('TWR Subscription!', recipients = [f"{email}"])
         print("Good Job")
-        msg.body="Thank you for subscribing to The Written Revolutions email updates, you will get an email whenever there is a post related to one of the topics you are interested in."
+        msg.html= render_template("email_layout.html", name = firstname, lastname=lastname, unsub = url)
         print("almost there")
         mail.send(msg)
         print("All done!")
@@ -275,9 +278,24 @@ def post():
         db = con.cursor()
         MAXID = list(db.execute("SELECT MAX(id) FROM articles"))
         id = MAXID[0][0] + 1
-        #admin_id = list(db.execute("SELECT id FROM admins WHERE name = ?", (name, )))
+        admin_id = list(db.execute("SELECT id FROM admins WHERE name = ?", (name, )))
 
-        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date) VALUES (?, ?, ?, ?, ?, ?, ?);", (title, authors, description, tags, f"static/articles/{id}.txt", img, date))
+        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date, admin_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", (title, authors, description, tags, f"static/articles/{id}.txt", img, date, admin_id[0][0]))
+
+        SQ = "%"+ email_tags[0] +"%"
+        cmd = "SELECT email, firstname, lastname FROM users WHERE tags LIKE ?"
+        recipients = list(db.execute(cmd, (SQ,)))
+
+    with mail.connect() as conn:
+        for recipient in recipients:
+            subject = 'New Article!'
+            s = URLSafeSerializer("HANS6NS_Art?icles_>ARE_OF_The_hi/ghest_/Quality/", salt='unsubscribe')
+            token = s.dumps(recipient[0])
+            url = url_for('unsub', token=token)
+            print(url)
+            body = render_template("email_layout.html", newarticle=True, name=recipient[1], lastname=recipient[2], img=img, title=title, id=id, authors=authors, description=description, unsub=url)
+            msg = Message(recipients=[recipient[0]], html=body, subject=subject)
+            conn.send(msg)
     
 
     f = open(f"static/articles/{id}.txt", "w")
@@ -305,8 +323,7 @@ def article():
         print(contents)
         db.execute("UPDATE articles set count = ? WHERE id = ?", (int(contents[0][3]) + 1, id[0][0]))
 
-
-
+   
     print(contents)
 
     file = open(f"static/articles/{articleid}.txt", "r")
@@ -314,3 +331,19 @@ def article():
     file.close()
 
     return render_template("article.html", contents=contents, text = text)
+
+@app.route("/unsub/<token>'")
+def unsub(token):
+    s = URLSafeSerializer("HANS6NS_Art?icles_>ARE_OF_The_hi/ghest_/Quality/", salt='unsubscribe')
+
+    try:
+        email = s.loads(token)
+    except BadData:
+        return "NO!"
+
+    with create_con("TWR.db") as con:
+        db = con.cursor()
+        db.execute("DELETE FROM users WHERE email = ?", (email,))
+        con.commit()
+
+    return f"{email} Unsubscribed!"
