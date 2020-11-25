@@ -159,6 +159,7 @@ div.article1
 div.article1 h1, div.article1 h3, div.article1 p
 {
   color: #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 div.article1:hover

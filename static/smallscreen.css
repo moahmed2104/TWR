@@ -7,3 +7,44 @@
 #navbar{
   display: none;
 }
+
+.contains_img
+{
+  display: none;
+}
+.index_img
+{
+  height: 50px; 
+}
+
+#wirecard
+{
+  top: 1420px;
+}
+
+.execs
+{
+  font-size: 18.8pt;
+}
+
+.articleimg
+{
+  max-height: 150px;
+}
+
+#body
+{
+  padding: 10px;
+}
+
+#text
+{
+  padding: 0;
+}
+
+.article
+{
+  width: 90%;
+  word-wrap: break-word;
+  word-break: break-word;
+}

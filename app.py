@@ -20,10 +20,11 @@ UPLOAD_FOLDER = "/uploads"
         Make accounts for all admins
         Make the email have html so it looks nice
         email all users that have signed-up whenever an article with their tag is posted "SELECT email FROM users WHERE tags LIKE '%tag_of_the_article%';" 
-        Optimize for mobile
-        Make suggested usingg cookies and add cookie disclaimer
-        add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
-        mmake submissions accept files and email them
+        
+        Post Production:
+            Make suggested usingg cookies and add cookie disclaimer
+            add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
+            mmake submissions accept files and email them
 """
 
 ## SET configurations
@@ -263,26 +264,27 @@ def post():
     title = request.form.get("title")
     authors = request.form.get("authors")
     description = request.form.get("description")
-    content = request.form.get("content")
     tags = request.form.get("tags")
+    content = request.form.get("content")
     img = request.form.get("image")
     date = request.form.get("date")
+
+    email_tags = request.form.getlist("email_tags")
 
     with create_con("TWR.db") as con:
         db = con.cursor()
         MAXID = list(db.execute("SELECT MAX(id) FROM articles"))
         id = MAXID[0][0] + 1
-        admin_id = list(db.execute("SELECT id FROM admins WHERE name = ?", (name, )))
+        #admin_id = list(db.execute("SELECT id FROM admins WHERE name = ?", (name, )))
 
-        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date, admin_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", (title, authors, description, tags, f"static/articles/{id}.txt", img, date, admin_id))
+        db.execute("INSERT INTO articles (titles, authors, descriptions, tags, text, image, date) VALUES (?, ?, ?, ?, ?, ?, ?);", (title, authors, description, tags, f"static/articles/{id}.txt", img, date))
     
 
     f = open(f"static/articles/{id}.txt", "w")
     f.write(content)
     f.close()
-
-
     return redirect(f"/admin/{name}")
+
 @app.route("/addName", methods=["POST"])
 def addName():
     name = request.form["name"]
