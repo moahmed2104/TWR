@@ -60,7 +60,6 @@
   .email_input
   {
     width: 84%;
-    height: 35px;
     background: transparent;
     border: 0;
     -webkit-box-sizing: border-box;
@@ -71,7 +70,6 @@
   .email_submit
   {
     width: 16%;
-    height: 35px;
     border: 0;
     border-radius: 0;
     background: transparent;
@@ -186,4 +184,5 @@ div.article1:hover
 .fa.fa-envelope.submit
 {
   color: white;
+  background-color: black;
 }

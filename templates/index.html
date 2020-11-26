@@ -11,8 +11,8 @@
 
 {% block index %}
 <a href="/article?articleid={{articles[0][4]}}" >
-    <div class="container-fluid"  style="display: block; overflow: hidden; height: 600px; background-image: url({{ articles[0][3] }}); background-size: cover; background-repeat: no-repeat; margin-top: 38px;">
-        <div class="container article1" style="position: absolute; float: left; top: 425px; width: fit-content;  max-width: 50%; font-family: 'Italiana';">
+    <div class="container-fluid iiiimg"  style="display: block; overflow: hidden; background-image: url({{ articles[0][3] }}); background-size: cover; background-repeat: no-repeat; margin-top: 38px;">
+        <div class="container article1" style="position: absolute; float: left; width: fit-content;  max-width: 50%; font-family: 'Italiana';">
             <h1 style="font-family: 'Italiana';">{{ articles[0][0].title() }}</h1>
             <p style="font-family: 'Open Sans', sans-serif; font-size: 13pt; margin-top: -7px;">By: {{ articles[0][1] }}</p>
             <div class="contains_img"><p style="font-family: 'Open Sans', sans-serif;">{{ articles[0][2][:210].strip(".").strip(" ") }}...</p></div>
@@ -56,7 +56,7 @@
     </div>
 
     <a href="/article?articleid={{articles[1][4]}}" >
-        <div class="container-fluid"  style="display: block; overflow: hidden; height: 600px; background-image: url({{ articles[1][3] }}); background-size: cover; background-repeat: no-repeat; margin-top: 38px;">
+        <div class="container-fluid iiiimg"  style="display: block; overflow: hidden; background-image: url({{ articles[1][3] }}); background-size: cover; background-repeat: no-repeat; margin-top: 38px;">
             <div class="container article1" id="wirecard" style="position: absolute; float: left;  width: fit-content; max-width: 40%; font-family: 'Italiana';">
                 <h1 style="font-family: 'Italiana';">{{ articles[1][0].title() }}</h1>
                 <p style="font-family: 'Open Sans', sans-serif; font-size: 13pt; margin-top: -7px;">By: {{ articles[1][1] }}</p>
@@ -66,7 +66,7 @@
         </div>
     </a>
 
-    <div class="container-fluid" style="font-family: 'Italiana'; background-color: #000000; height: fit-content;color: #ffffff">
+    <div class="container-fluid alaz_2" style="font-family: 'Italiana'; background-color: #000000; height: fit-content; color: #ffffff">
         <br style="font-size: 20pt">
         <label><h1 style="font-family: 'Italiana';">Popular</h1></label>
         <div class="row" style=" font-family: 'Italiana'; margin-bottom: 45pt;">
@@ -82,11 +82,10 @@
                     <div class="contains_img"><p style=" font-family: 'Open Sans', sans-serif;font-size: 9pt; margin-top: -7px;">{{ popular[i][2][:210].strip('.').strip(" ") }}...</p></div>
                     <p  style=" font-family: 'Open Sans', sans-serif;font-size: 9pt; margin-top: -7px; color: #525252">{{ popular[i][5] }}</p>
                 </div>
-
-            {% endfor %}
+            {% endfor %} 
         </div>
-        <p style="color: #000000;">sparking water</p>
-    </div>
+     </div>
+        
     <div>
 
 {% endblock %}

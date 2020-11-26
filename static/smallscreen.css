@@ -19,7 +19,7 @@
 
 #wirecard
 {
-  top: 1420px;
+  top: 830px;
 }
 
 .execs
@@ -47,4 +47,68 @@
   width: 90%;
   word-wrap: break-word;
   word-break: break-word;
+}
+
+.iiiimg
+{
+  height: 300px;
+  
+}
+
+.article1
+{
+  top: 130px;
+}
+
+.coolio
+{
+  width: 100%;
+  padding-top: 1rem;
+  margin: auto;
+}
+
+.ALAZNAAY
+{
+  font-size: 10px;
+}
+
+.ALAZ
+{
+  width: 95%;
+}
+
+.alazz
+{
+  display: inline-block;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 1.2rem
+}
+
+.alaznayy
+{
+  height: 40px;
+}
+
+.alspice
+{
+  height: 23%;
+}
+
+.alaz_2
+{
+  max-height: 400px;
+}
+
+
+.execs_fix
+{
+  display: none;
+}
+
+.alazs_mission
+{
+  width: 90%;
+  text-align: justify;
 }

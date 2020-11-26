@@ -18,7 +18,7 @@
                     <div style="overflow: hidden; height: 185px; width: 185px; margin: auto; border-radius: 50%;">
                         <img src="https://drive.google.com/uc?export=view&id={{ people[i].profile_photo }}" style="display: block; margin: auto;" width=100%>
                     </div>
-                    <h2 style="font-family: 'Playfair Display';">{{ people[i].fullname }}</h2>
+                    <h2 style="font-family: 'Playfair Display';">{{ people[i].fullname|title }}</h2>
                     
                     <p ><strong><a href="https://www.instagram.com/{{people[i].insta}}">@{{ people[i].insta }}</a></strong></p>
                 </div>
@@ -37,7 +37,7 @@
                         {% if (i + j) % 4 == 3 %}
                             </div> 
                         {% else %}
-                            <div class="col"></div>
+                            <div class="col execs_fix"></div>
                         {% endif %}
                     {% endfor %}
             {% endif %}
