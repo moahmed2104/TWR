@@ -47,7 +47,7 @@
     width: 50px;
     text-align: center;
     text-decoration: none;
-    color: white;
+    color: black;
     background-color: transparent;
   }
 
@@ -180,5 +180,10 @@ div.article1:hover
 .default_footer
 {
   background-color: black;
+  color: white;
+}
+
+.fa.fa-envelope.submit
+{
   color: white;
 }

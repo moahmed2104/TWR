@@ -14,12 +14,10 @@ from itsdangerous import URLSafeSerializer, BadData
 app = Flask(__name__)
 mail = Mail(app)
 
-UPLOAD_FOLDER = "/uploads"
+UPLOAD_FOLDER = "/uploads" 
 
 
 """ ##TODO
-        Make accounts for all admins
-
         Post Production:
             Make suggested usingg cookies and add cookie disclaimer
             add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
@@ -73,10 +71,12 @@ def index():
     return render_template("index.html", articles=content, popular=popular)
 
 #email function
-@app.route("/email", methods =["POST"])
+@app.route("/email", methods =["GET", "POST"])
 def email():
-    email = request.form["email"]
-    return render_template("email.html", email=email)
+    if request.method == "POST":
+        email = request.form["email"]
+        return render_template("email.html", email=email)
+    return render_template("email.html", email = "Email")
 
 @app.route("/ourmission")
 def ourmission():
