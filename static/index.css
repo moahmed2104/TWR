@@ -3,10 +3,16 @@
     background-color: #000000;
 }
 
-.indexcolor
+.indexcolortop
 {
-    background-color: #ffffff;
+    background-color: white;
     color: black;
+}
+
+.indexcolorbottom
+{
+    color: white;
+    background-color: black;
 }
 
 .index-ghost
@@ -21,6 +27,11 @@
     width: 50px;
     text-align: center;
     text-decoration: none;
-    color: black;
+    color: white;
     background-color: transparent;
+  }
+
+  .fa.fa-envelope.submit
+  {
+    color: black;
   }

@@ -7,7 +7,7 @@
 {% block body %}
     <article style="margin: none">
         <div class="articleimg article" style="overflow: hidden; margin: auto">
-            <img src="{{ contents[0][2] }}" style="width: 100%; height: auto;">
+            <img src="{{ contents[0][2] }}" onerror="this.src='static/white_logo_text.png'" style="width: 100%; height: auto;">
         </div>
         <div class="article" style="margin:auto" >
             <h1 style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ contents[0][0]|title }}</h1>
