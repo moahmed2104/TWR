@@ -13,7 +13,7 @@
         <br><br><br><br><br><br><br><br><br-->
     {% else %}
         {% for i in range(articles | length) %}
-            <div class="row article_display" style="max-height: fit-content; font-family: 'Playfair Display' serif;">
+            <div class="row article_display ALAZ" style="margin: auto;max-height: fit-content; font-family: 'Playfair Display' serif;">
                 {% if i % 2 == 0 %}
                     
                     <div class="col contains_img" style="overflow: hidden; width: 50%; max-height: 350;">
@@ -53,10 +53,8 @@
             {% endif %}
                 
         {% endfor %}
-        <br>
-        {% if ( articles | length ) == 1 %}
-            <br style="font-size: 138px;">
-        {% endif %}
+       
+        
         
     {% endif %}
     

@@ -23,6 +23,7 @@
             <link href='https://fonts.googleapis.com/css?family=Playfair Display SC' rel='stylesheet'>
             <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
             <link href='https://fonts.googleapis.com/css?family=Italiana' rel='stylesheet'>
+            <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
 
             <link rel="stylesheet" href="static/styles.css">
@@ -55,7 +56,7 @@
                         <li class="nav-item active">
                         <a class="nav-link" href='/search?q=creative'>CREATIVE</a></li>
                         <li class="nav-item active">
-                        <a class="nav-link" href='/search?q=business'>BUSINESS & ECONOMICS</a></li>
+                        <a class="nav-link" href='/search?q=business'>BUSINESS <p style="font-family: 'Playfair Display'; display: inline">&amp;</p> ECONOMICS</a></li>
                         <li class="nav-item active">
                         <a class="nav-link" href='/ourmission'>MISSION</a></li>
                         <li class="nav-item dropdown">
@@ -87,7 +88,7 @@
                       <span class="navbar-toggler-icon"></span>
                     </button>   
                     <a class="navbar-brand" href='/'>                 
-                    <img width="50px" height="mr-auto" style="margin-top: -12px;" src="static/wtlogo.png"  alt= "TWR">
+                    <img width="50px" height="mr-auto" style="margin-right: -15px;" src="static/wtlogo.png"  alt= "TWR">
                     </a>
                   </nav>
             </div>
@@ -108,7 +109,7 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href='/search?q=creative'>CREATIVE</a></li>
                             <li class="nav-item active">
-                                <a class="nav-link" href='/search?q=business'>BUSINESS & ECONOMICS</a></li>
+                                <a class="nav-link" href='/search?q=business'>BUSINESS <p style="font-family: 'Playfair Display'; display: inline">&amp;</p> ECONOMICS</a></li>
                             <li class="nav-item active">
                                 <a class="nav-link" href='/ourmission'>MISSION</a></li>
                             <li class="nav-item dropdown">
@@ -137,20 +138,21 @@
        {% block top %}{% endblock %}
 
        {% block index %}{% endblock %}
-            <div class="container index-ghost" id=body style="margin-top: 50pt;overflow-y:scroll;  min-height: 84%">
+            <div class="container index-ghost" id=body style="margin-top: 50pt;overflow-y:scroll;  min-height: 70%">
                 {% block body %}{% endblock %}
             </div> 
-                <div class="sticky-bottom container-fluid indexcolortop default_footer" style="margin: auto; height: 20%; ">
-                    <div class="container-fluid" style="width: 70%; float: left; padding-top: 2rem">
-                        <label  style="font-family: 'Playfair Display'; text-align: left; font-size: 30px; vertical-align: center;" for="email">Subscribe</label>
-                        <p>Sign up with your email address to receive news and updates.</p>
+                <div class="sticky-bottom container-fluid indexcolortop default_footer  alspice" style="width: 100%">
+                    <div class="container-fluid alazz">
+                        <span  style="font-family: 'Italiana'; text-align: left; vertical-align: center;" for="email">Subscribe to our newsletter</span>
+                        <br style="font-size: 20px;">
+                        <p class="contains_img alazzz" style="font-family: 'Montserrat'; margin-top: 20px;">Sign up with your email address to receive news and updates.</p>
                     </div>
-                    <div class="container" style="width: 30%; padding-top: 3.6rem; float: right; text-align: left; box-sizing: border-box;">
+                    <div class="container coolio" style="text-align: left; box-sizing: border-box;">
                         <form class="form-inline" action="/email" method="POST">
-                            <div class="form-group mx-sm-3  mb-2" style="margin-top: 3px; shape-outside: box-sizing;">
-                            <input autocomplete="on" class="form-control email_input" style="transition: background .3s ease-out,border .3s ease-out; border: 1px solid rgba(0,0,0,.12); display: inline-block" id="email_input" onkeyup="check()" name="email" placeholder="Email" type="email">
+                            <div class="form-group form-group-lg mx-sm-3  mb-2" style="width: 100%;margin-top: 3px; shape-outside: box-sizing;">
+                            <input autocomplete="on" class="form-control email_input  alaznayy" style="width: 75%;transition: background .3s ease-out,border .3s ease-out; border: 1px solid rgba(0,0,0,.12); display: inline-block; font-family: 'Montserrat';" id="email_input" onkeyup="check()" name="email" placeholder="Email" type="email">
+                            <button class="btn btn-lg email_submit ALAZNAAY alaznayy" type="submit" value="submit" disabled="disabled" id="submitbutton" onclick="return check2();" style="margin: 5px;width: 17%;transition: background .3s ease-out,border .3s ease-out; border: 1px solid rgba(0,0,0,.12); display: inline-block;"><i class='fa fa-envelope submit' style="padding: 10px;"></i></button>
                             </div>
-                            <button class="btn btn-sm email_submit" type="submit" value="submit" disabled="disabled" id="submitbutton" onclick="return check2();" style="transition: background .3s ease-out,border .3s ease-out; border: 1px solid rgba(0,0,0,.12); display: inline-block;"><i class='fa fa-envelope submit' style="padding: 10px;"></i></button>
                             
                             <div style='clear:both;'></div>
                         </form>
@@ -181,11 +183,7 @@
                         <a href='https://twitter.com/TWRevolutions' target='_blank'><i class='fa fa-twitter'></i></a>
                         <a href='mailto:thewrittenrevolutions@gmail.com' target='_blank'><i class='fa fa-envelope'></i></a>
                     </div>
-                </div>
-
-                
-               
-                
+                </div>   
         </body>
     </html>
    

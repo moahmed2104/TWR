@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="execs" style="text-align: center; font-family: 'Playfair Display', sans-serif; "><u>__Executive Team__</u></h1>
+    <h1 class="execs" style="margin-top: -15px;text-align: center; font-family: 'Playfair Display', sans-serif; "><u>__Executive Team__</u></h1>
     
     <br>
     <br>
@@ -15,20 +15,20 @@
         {% for i in range(people | length) %}
 
                 <div class="col" style="text-align: center">
-                        <details>
-                            <summary> 
+                    <details>
+                            <summary > 
                                 <div style="overflow: hidden; height: 250px; width: 250px; margin: auto; border-radius: 50%;">
                                     <img src="https://drive.google.com/uc?export=view&id={{ people[i].profile_photo }}" style="display: block; margin: auto;" width="250px" height="auto">
                                 </div>
-                                <h2 style="font-family:'Playfair Display';">{{ people[i].fullname }}</h2>
-                                <p style="font-family:'Playfair Display';">{{ people[i].title }}
+                                <h2 style="font-family:'Playfair Display';">{{ people[i].fullname|title }}</h2>
+                                <p style="font-family:'Playfair Display';">{{ people[i].title|title }}</p>
                             </summary>
                             
                             <div id="{{people[i].insta_info}}" class="shown" style="font-family:'Playfair Display';">
                                 <p><strong><a href="https://www.instagram.com/{{people[i].insta}}">@{{ people[i].insta }}</a></strong></p>
-                                <p style="font-size: 12px; text-align: justify">{{ people[i].short_bio }}<p>
+                                <p style="font-size: 12px; text-align: justify">{{ people[i].short_bio }}</p>
                             </div>
-                        </details>
+                    </details>
                 </div>
             
             {% if i % 3 == 2 %}
@@ -43,7 +43,7 @@
                         {% if (i + j) % 3 == 2 %}
                             </div> 
                         {% else %}
-                            <div class="col"></div>
+                            <div class="col execs_fix"></div>
                         {% endif %}
                     {% endfor %}
             {% endif %}
