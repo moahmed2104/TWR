@@ -1,0 +1,188 @@
+.a 
+{
+    padding-left: 35px;
+}
+
+.a a
+{
+    padding-left: inherit;
+}
+
+.dd
+{
+  color: white;
+}
+
+.ours
+{
+  color:   #043927;
+  border: 10px solid #043927;
+  position: relative;  
+  background-color: #043927;
+  display:inline-block;
+  text-align:center;
+  width:100%;
+  overflow:hidden;
+}
+
+.ours a
+{
+  clear:left;
+   float:left;
+   float:right;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+   left:50%;
+   right:50%;
+   text-align:center;
+}
+
+
+.fa 
+{
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+  }
+
+  .fa:hover 
+  {
+    color: red;
+  }
+
+
+  .email_input
+  {
+    width: 84%;
+    background: transparent;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .email_submit
+  {
+    width: 16%;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #000000;
+    font-size: 13px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  .ghost
+{
+    display: none;
+}
+
+.shown
+{
+    display: block;
+    margin-top: 1em;
+}
+
+.ghost h2, .ghost p, .shown h2, .shown p
+{
+  display: inherit;
+}
+
+.insta
+{
+  opacity: .8;
+}
+
+.insta:hover
+{
+  color: rgb(61, 111, 158);
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1
+{
+  /*text-align: center;*/
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  font-size: 30pt;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+article blockquote
+{
+  background: #c2d6d6;
+  padding: 30px;
+  color: #454545;
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+
+
+article h4{
+  color: LightSlateGrey;
+}
+
+article p
+{
+  line-height: .9;
+  text-align: justify;
+}
+
+div.article1
+{
+  background-color: rgba(0,0,0,.7);
+
+}
+div.article1 h1, div.article1 h3, div.article1 p
+{
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+div.article1:hover
+{
+  background-color: rgba(0,0,0,1);
+}
+
+#q::placeholder, #q
+{
+  color: white;
+}
+
+#q:focus
+{
+  border: 1px solid white;
+}
+
+.default_footer
+{
+  background-color: black;
+  color: white;
+}
+
+.fa.fa-envelope.submit
+{
+  color: white;
+  background-color: black;
+}

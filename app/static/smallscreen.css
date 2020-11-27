@@ -1,0 +1,134 @@
+.hamburger
+{
+    
+  display: block;
+}
+
+#navbar{
+  display: none;
+}
+
+.contains_img
+{
+  display: none;
+}
+.index_img
+{
+  height: 50px; 
+}
+
+#wirecard
+{
+  top: 830px;
+}
+
+.execs
+{
+  font-size: 18.8pt;
+}
+
+.articleimg
+{
+  max-height: 150px;
+}
+
+#body
+{
+  padding: 10px;
+}
+
+#text
+{
+  padding: 0;
+}
+
+.article
+{
+  width: 90%;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.iiiimg
+{
+  height: 300px;
+  
+}
+
+.article1
+{
+  top: 130px;
+}
+
+.coolio
+{
+  width: 100%;
+  padding-top: 1rem;
+  margin: auto;
+}
+
+.ALAZNAAY
+{
+  font-size: 10px;
+}
+
+.ALAZ
+{
+  width: 95%;
+}
+
+.alazz
+{
+  display: inline-block;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 1.2rem
+}
+
+.alaznayy
+{
+  height: 40px;
+}
+
+.alspice
+{
+  height: 23%;
+}
+
+.alaznayy
+{
+  height: 10%;
+}
+
+.alaz_2
+{
+  max-height: 400px;
+}
+
+
+.execs_fix
+{
+  display: none;
+}
+
+.alazs_mission
+{
+  width: 90%;
+  text-align: justify;
+}
+
+.alazalazz
+{
+  height: 10%;
+}
+
+.zala
+{
+  font-size: 7px;
+}
+
+.articleimg
+{
+  max-height: 150px;
+}
