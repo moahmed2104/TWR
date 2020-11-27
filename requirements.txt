@@ -1,8 +1,0 @@
-flask
-flask_session
-flask_mail
-werkzeug
-werkzeug.utils
-werkzeug.security
-tempfile
-itsdangerous
