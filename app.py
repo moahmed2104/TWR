@@ -7,7 +7,6 @@ import werkzeug
 from werkzeug.security import check_password_hash
 from helpers import *
 import csv
-import json
 from werkzeug.utils import secure_filename
 from itsdangerous import URLSafeSerializer, BadData
 
