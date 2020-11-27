@@ -6,3 +6,4 @@ werkzeug.utils
 werkzeug.security
 tempfile
 itsdangerous
+gunicorn
