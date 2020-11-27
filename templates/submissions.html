@@ -10,27 +10,12 @@
     <br>
     <br>
 
-    <h3 style="font-family: 'Playfair Display', sans-serif; margin-bottom: 30px;"> Email your submissions to <a href="mailto:thewrittenrevolutions@gmail.com">thewrittenrevolutions@gmail.com</a>
+    <h3 style="font-family: 'Playfair Display', sans-serif; margin-bottom: 30px; text-align: center;"> Email your submissions to <a href="mailto:thewrittenrevolutions@gmail.com">thewrittenrevolutions@gmail.com</a></h3>
     <form action="/submissions" method="POST" enctype="multipart/form-data">
-       <!--div style="text-align: left;">
-            <label for="name">Name</label>
-            <div class="form-group">
-                <input id="name" name="name" type="text" placeholder="Name">
-            </div>
-
-            <br>
-            
-            <label for="email">Email</label>
-            <div class="form-group">
-                <input id="email" name="email" type="email" placeholder="Email">
-            </div>
-        </div-->
         <div>
             <h2 style="text-align: center; font-family: 'Playfair Display', sans-serif; font-size: 20pt;">Select which category your submission falls under:</h2>
         </div>
-        
-    
-        
+
         <div class="form-row" style="font-size: 20px; font-family: 'Playfair Display'">
 
             <div class="col" id="polit" style="text-align: center;">
@@ -50,13 +35,6 @@
                 <button  type="button" class="btn btn-dark"  style="margin: 30px; background-color:black; display: inline-block;">Freewrite</button>  
             </div>    
         </div>
-    
-        <!--
-        <div class="form-group">
-            <input type="file" name="fileemail">
-            <input type="submit" value="submit">
-        </div>
-    -->
     </form>
     
     <div id="poli" class="ghost" style="font-size: 15px; font-family: 'Playfair Display'">
@@ -106,17 +84,47 @@
                         <li>Ensure that the image or film is your own.</li>
                         <li>For photos submit both the edited and unedited version</li>
                         <li>Give a brief description and a caption with your submission</li>
+                        <li>Please make sure your photo is in .jpg form and your film is .mov or .mp4</li>
                     </ul>
                 </li>
             </ul>
     </div>
 
-    <div id="econ" class="ghost">
+    <div id="econ" class="ghost" style="font-size: 15px; font-family: 'Playfair Display'">
         <h3 style="text-align: left; font-size: 20px; font-family: 'Playfair Display'"><u>Requirements</u></h3>
+        <ul>
+            <li>Formatting:
+                <ul>
+                    <li>Include a title and a by line</li>
+                    <li>Article has to be max 4 pages including the references & resources</li>
+                    <li>Three pages of info and the fourth page is for references</li>
+                    <li>2.5 pages minimum including the references</li> 
+                    <li>Two pages of info and the third page will be for the references</li>
+                    <li>Font - Open Sans</li> 
+                    <li>Size - 11 max, 10 min</li>
+                </ul>
+            </li>
+            <li>Research:
+                <ul>
+                <li>Research is critical</li>
+                <li>Plagiarism is not tolerated</li>
+                <li>Use credible sources</li>
+                <li>Balance biases</li>
+                <li>Referencing - just copy and paste links at the bottom of your articles.</li>
+                </ul>
+            </li>
+            <li>Use diplomatic and formal language in your writing</li>
+            <li>Make sure your submission is in either .docx or .pdf form</li>
+        </ul>
     </div>
             
-    <div id="free" class="ghost">
+    <div id="free" class="ghost" style="font-size: 15px; font-family: 'Playfair Display'">
         <h3 style="text-align: left; font-size: 20px; font-family: 'Playfair Display'"><u>Requirements</u></h3>
+        <ul>
+            <li>Font - Open Sans</li> 
+            <li>Size - 11 max, 10 min</li>
+            <li>Include in your email some context on your piece.</li>
+        </ul>
     </div>  
 
 <script src="static/sub.js"></script>
@@ -127,6 +135,5 @@
 <br>
 <br>
 <br>
-<br>
-<br>
+
 {% endblock %}

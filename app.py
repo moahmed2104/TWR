@@ -10,31 +10,36 @@ import csv
 from werkzeug.utils import secure_filename
 from itsdangerous import URLSafeSerializer, BadData
 
+
 app = Flask(__name__)
-mail = Mail(app)
 
 UPLOAD_FOLDER = "/uploads" 
 
 
 """ ##TODO
-        Post Production:
-            Make suggested usingg cookies and add cookie disclaimer
-            add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
-            mmake submissions accept files and email them
+    burvwreconmjdyor
+    Post Production:
+        Make suggested usingg cookies and add cookie disclaimer
+        add eazter egg using gmap on ze coin in hansonz image linking to sommezing estubid
+        make submissions accept files and email them
 """
 
-## SET configurations
-app.config["MAIL_DEFAULT_SENDER"] = "yelmays@icloud.com" #"moahmed2104@gmail.com"#"thewrittenrevolutions@gmail.com"#
+## SET mail configurations
+app.config["MAIL_DEFAULT_SENDER"] = "thewrittenrevolutions@gmail.com"
 app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
-app.config["MAIL_PORT"] = 587#465
-app.config["MAIL_SERVER"] = "smtp.mail.me.com"#"smtp.gmail.com"
-app.config["MAIL_USE_TLS"] = True
-#app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = "yelmays@icloud.com"#"thewrittenrevolutions@gmail.com"#"moahmed2104@gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USE_TLS"] = False
+app.config["MAIL_USERNAME"] = "thewrittenrevolutions@gmail.com"
 app.config["MAIL_ASCII_ATTACHMENTS"] = True
+
+mail = Mail(app)
+
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+## SET cookie configurations
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -43,7 +48,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 Session(app)
 
-mail = Mail(app)
+
 
 
 @app.after_request
@@ -58,7 +63,7 @@ def after_request(response):
 def index():
     with create_con("TWR.db") as con:
         db = con.cursor()
-        ##Select 9 last articles
+        #Select 9 last articles
         db.execute("SELECT titles, authors, descriptions, image, id, date FROM articles ORDER BY id DESC LIMIT 5;")
         content = db.fetchall()
         con.commit()
@@ -96,6 +101,7 @@ def mission():
     
     return render_template("execs.html", people=people)
 
+#Junior columnists
 @app.route("/junior")
 def junior():
     people = []
@@ -110,6 +116,7 @@ def junior():
     
     return render_template("junior.html", people=people)
 
+#Ambassadors
 @app.route("/amb")
 def amb():
     people = []
@@ -124,6 +131,7 @@ def amb():
     
     return render_template("amb.html", people=people)
 
+#Submissions page
 @app.route("/submissions", methods=["GET","POST"])
 def submissions():
     if request.method == "POST":
@@ -151,6 +159,7 @@ def submissions():
 
     return render_template("submissions.html")
 
+#Search bar
 @app.route("/search")
 def search():
     ##get query
@@ -187,7 +196,7 @@ def register():
 
     with create_con("TWR.db") as con:
         db = con.cursor()
-        check_cmd = "SELECT id FROM users WHERE email = ?;"  #Selecting emails from database to email
+        check_cmd = "SELECT id FROM users WHERE email = ?;"
         check = list(db.execute(check_cmd, (email,)))
         checker = True
 
@@ -216,7 +225,7 @@ def register():
     return redirect("/")
 
 
-
+#Login page for admins
 @app.route("/admin_login")
 @app.route("/admin_login/<string:name>", methods=["GET", "POST"])
 def admin_login(name = "NoName"):
@@ -247,6 +256,7 @@ def admin_login(name = "NoName"):
         
     return render_template("admin_login.html", name=name)
 
+#Admin page
 @app.route("/admin")
 @app.route("/admin/<string:name>")
 @login_required
@@ -259,6 +269,7 @@ def admin(name="NoName"):
     return render_template("admin.html", name=name)
 
 
+#Posting articles
 @app.route("/post", methods=["POST"])
 @login_required
 def post():
@@ -285,7 +296,7 @@ def post():
         cmd = "SELECT email, firstname, lastname FROM users WHERE tags LIKE ?"
         recipients = list(db.execute(cmd, (SQ,)))
 
-    with mail.connect() as conn:
+    with mail.connect() as conn: #Send an email to subscribers when articles are posted
         for recipient in recipients:
             subject = 'New Article!'
             s = URLSafeSerializer("HANS6NS_Art?icles_>ARE_OF_The_hi/ghest_/Quality/", salt='unsubscribe')
@@ -308,7 +319,7 @@ def addName():
     return redirect(f"/admin_login/{name}")
 
 
-@app.route("/article")#/<string:articleid>")
+@app.route("/article")
 def article():
     articleid = request.args.get("articleid")
 
@@ -331,6 +342,7 @@ def article():
 
     return render_template("article.html", contents=contents, text = text)
 
+#Unsubscribe from email messages
 @app.route("/unsub/<token>'")
 def unsub(token):
     s = URLSafeSerializer("HANS6NS_Art?icles_>ARE_OF_The_hi/ghest_/Quality/", salt='unsubscribe')
