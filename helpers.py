@@ -2,6 +2,7 @@ from flask import redirect, request, session
 from functools import wraps
 import sqlite3
 
+#When there's a connection to the database
 def create_con(path):
     connection = None
     try:

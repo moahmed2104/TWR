@@ -15,6 +15,7 @@
             <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
             <link href='https://fonts.googleapis.com/css?family=Italiana' rel='stylesheet'>
 
+            <!--Styling for email template-->
             <style>
                 .a 
                 {
@@ -123,9 +124,9 @@
                             <ul class="navbar-nav mr-auto nav-fill w-100">
                                 <li>
                                     <div style="margin: auto">
-                                        <a class="navbar-brand" href='http://localhost:50000/'>
+                                        <a class="navbar-brand" href='https://www.thewrittenrevolutions.com/'>
                                             <br style="font-size: xx-small">
-                                            <img width="50px" height="mr-auto" style="margin-top: -12px;" src="http://localhost:50000/static/wtlogo.png"  alt= "TWR">
+                                            <img width="50px" height="mr-auto" style="margin-top: -12px;" src="https://www.thewrittenrevolutions.com/static/wtlogo.png"  alt= "TWR">
                                         </a>
                                     </div>
                                 </li>
@@ -135,18 +136,18 @@
         
     {% if newarticle %}
         <div class="container index-ghost" id=body style="margin-top: 50pt; overflow-y:scroll;height: 80% ">
-            <h1 style="text-align: center"> Hey {{ name|title }} {{ lastname|title }}! We have a new article for you. </h1>
+            <h1 style="text-align: center; font-family: 'Italiana'"> Hey {{ name|title }} {{ lastname|title }}! We have a new article for you. </h1>
             
             <br>
 
-            <a href="http://127.0.0.1:5000/article?articleid={{ id }}">
+            <a href="http://thewrittenrevolutions/article?articleid={{ id }}">
                 <div style="width: 80%; overflow: hidden; margin: auto; height: 400px">
                     <img src={{img}} width="100%">
                 </div>
                 <div style="width: 80%; margin: auto;">
-                <h2>{{ title|title }}</h2> 
-                <p style="font-family: 'Open Sans', sans-serif; font-size: 13pt; margin-top: -7px;">By: {{ authors }}</p>
-                <div class="contains_img"><p style="font-family: 'Open Sans', sans-serif;">{{ description[:210].strip(".").strip(" ") }}...</p></div>
+                <h2 style="font: 'Montserrat';">{{ title|title }}</h2> 
+                <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 13pt; margin-top: -7px;">By: {{ authors }}</p>
+                <div class="contains_img"><p style="font-family: Georgia, 'Times New Roman', Times, serif;">{{ description[:210].strip(".").strip(" ") }}...</p></div>
                 </div>
             </a>
             <br>
@@ -154,8 +155,8 @@
         <br>
     {% else %}
     <div class="container index-ghost" id=body style="margin-top: 50pt; overflow-y:scroll; height: 80%">   
-        <h1>Hi {{ name}} {{lastname}}, thank you for subscribing to The Written Revolutions email updates!</h1>
-        <h2>You will receive an email whenever there is a post related to one of the topics you are interested in.</h2>
+        <h1 style="font-family: 'Italiana';">Hi {{ name}} {{lastname}}, thank you for subscribing to The Written Revolutions email updates!</h1>
+        <h2 style="font-family: 'Montserrat';">You will receive an email whenever there is a post related to one of the topics you are interested in.</h2>
     </div>
     {% endif %}
             <div class="fixed-bottom container-fluid indexcolor default_footer" style="margin: auto; text-align: center; height: 10%;">
@@ -166,7 +167,7 @@
                     <a href='https://twitter.com/TWRevolutions' target='_blank'><i class='fa fa-twitter'></i></a>
                     <a href='mailto:thewrittenrevolutions@gmail.com' target='_blank'><i class='fa fa-envelope'></i></a>
 
-                    <p style="text-align: center"><a href="http://127.0.0.1:50000/{{ unsub }}">Unsubscribe</a></p>
+                    <p style="text-align: center"><a href="http://thewrittenrevolutions{{ unsub }}">Unsubscribe</a></p>
                 </div>
             </div>
         </body>
