@@ -15,6 +15,7 @@ app = Flask(__name__)
 
 UPLOAD_FOLDER = "/uploads" 
 
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 """ ##TODO
     burvwreconmjdyor
@@ -211,7 +212,7 @@ def register():
             db.execute(cmd, (email, firstname, lastname, tags))
             con.commit()
 
-        s = URLSafeSerializer("HANS6NS_Art?icles_>ARE_OF_The_hi/ghest_/Quality/", salt='unsubscribe')
+        s = URLSafeSerializer(SECRET_KEY, salt='unsubscribe')
         token = s.dumps(email)
         url = url_for('unsub', token=token)
         print("passed!")
@@ -299,7 +300,7 @@ def post():
     with mail.connect() as conn: #Send an email to subscribers when articles are posted
         for recipient in recipients:
             subject = 'New Article!'
-            s = URLSafeSerializer("HANS6NS_Art?icles_>ARE_OF_The_hi/ghest_/Quality/", salt='unsubscribe')
+            s = URLSafeSerializer(SECRET_KEY, salt='unsubscribe')
             token = s.dumps(recipient[0])
             url = url_for('unsub', token=token)
             print(url)
@@ -345,7 +346,7 @@ def article():
 #Unsubscribe from email messages
 @app.route("/unsub/<token>'")
 def unsub(token):
-    s = URLSafeSerializer("HANS6NS_Art?icles_>ARE_OF_The_hi/ghest_/Quality/", salt='unsubscribe')
+    s = URLSafeSerializer(SECRET_KEY, salt='unsubscribe')
 
     try:
         email = s.loads(token)
