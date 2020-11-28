@@ -358,3 +358,7 @@ def unsub(token):
         con.commit()
 
     return f"{email} Unsubscribed!"
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')

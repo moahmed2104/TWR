@@ -87,25 +87,23 @@
         </div>
      </div>
         
-    <div>
 
         <h3 class="zala" style="color:white; text-align: center; font-family: 'Montserrat'; ">FOLLOW US ON INSTAGRAM <a class="zala" href="https://www.instagram.com/thewrittenrevolutions">@THEWRITTENREVOLUTIONS</a></h3> 
     <div class="container-fluid alazalazz" id="instagram-feed" style="padding: 0;">
-        
-    </div>
-    
         <!-- See "Set Up" for the instructions -->
         <script src="https://cdn.jsdelivr.net/gh/jsanahuja/InstagramFeed/dist/InstagramFeed.min.js"></script>
 
         <script>(function(){ new InstagramFeed({
             'username': 'thewrittenrevolutions',
             'container': document.getElementById("instagram-feed"),
-            'display_profile': false,'display_biography': false,
+            'display_profile': false,
+            'display_biography': false,
             'display_gallery': true,
             'callback': null,
             'styling': true,
             'items': 6,
             'items_per_row':
              6,'margin': 0,});})();</script>
-
+    </div>
+    
 {% endblock %}
